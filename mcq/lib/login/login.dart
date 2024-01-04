@@ -10,9 +10,17 @@ class LoginScreen extends StatelessWidget {
         title: Text("Login"),
       ),
 
-      body: Center(
-        child: Text("Login screen"),
-      ),
+      body: Container(
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+
+          children: [
+            const FlutterLogo(size: 150,),
+          ],
+        ),
+      )
     );
   }
 }
@@ -35,12 +43,16 @@ class LoginButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: ElevatedButton.icon(
-          onPressed: onPressed,
+          onPressed:() => loginMethod,
           icon: Icon(
             icon,
             color: Colors.white, size: 20,
           ),
-          label: label),
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(24),
+            backgroundColor: color
+          ),
+          label: Text(text)),
     );
   }
 }
