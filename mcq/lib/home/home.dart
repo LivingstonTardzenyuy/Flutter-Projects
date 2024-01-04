@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcq/login/login.dart';
 import 'package:mcq/services/auth.dart';
 import 'package:mcq/topics/topics.dart';
 
@@ -18,6 +19,8 @@ class HomeScreen extends StatelessWidget {
             );
           } else if (snapshot.hasData){
             return const TopicsScreen();
+          } else {
+            return const LoginScreen();
           }
         });
   }

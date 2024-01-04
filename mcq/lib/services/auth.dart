@@ -5,5 +5,9 @@ class AuthService {
   final userStream = FirebaseAuth.instance.authStateChanges();
   final user = FirebaseAuth.instance.currentUser;
 
+  //Anonymouse Firebase Login
+  Future<void> anonLogin() async {
+
+  }
 
 }
