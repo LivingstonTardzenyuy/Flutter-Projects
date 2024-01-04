@@ -17,6 +17,7 @@ class BottonNavBar extends StatelessWidget {
           switch (idx) {
             case 0:
               //do nothing
+            Navigator.pushNamed(context, '/topics');
               break;
             case 1:
               Navigator.pushNamed(context, '/about');
