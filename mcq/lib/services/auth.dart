@@ -7,7 +7,15 @@ class AuthService {
 
   //Anonymouse Firebase Login
   Future<void> anonLogin() async {
+    try{
+      await FirebaseAuth.instance.signInAnonymously();
+    } on FirebaseAuthException catch (e){
 
+    }
+  }
+
+  Future<void> anonSignOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 
 }
