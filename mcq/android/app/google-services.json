@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "710671663631",
+    "project_id": "multiply-mcq",
+    "storage_bucket": "multiply-mcq.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710671663631:android:922683a01f90eb3156597a",
+        "android_client_info": {
+          "package_name": "com.example.fl_learn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdsmlFQA42ZdGHiG2XJvgBcqmuYYDce0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710671663631:android:f189e3bf9c95ed3256597a",
+        "android_client_info": {
+          "package_name": "com.example.mcq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdsmlFQA42ZdGHiG2XJvgBcqmuYYDce0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
