@@ -11,7 +11,9 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, '/about');
           },
-          child: Text('about'),
+          child: Text('about'
+          // style: Theme.of(context).textTheme.button.t,
+          ),
         ),
       ),
     );
