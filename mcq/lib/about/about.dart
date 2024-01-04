@@ -5,6 +5,15 @@ class AboutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("About Page"),
+      ),
+      body: Container(
+        child: Center(
+          child: Text("About screen"),
+        ),
+      ),
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:mcq/topics/topics.dart';
 
@@ -15,4 +14,4 @@ var appRoutes = {
   '/topics': (context) => const TopicsScreen(),
   '/profile': (context) => const ProfileScreen(),
   '/about': (context) => const AboutScreen(),
-}
+};
