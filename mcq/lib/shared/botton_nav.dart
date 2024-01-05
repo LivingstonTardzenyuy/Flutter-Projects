@@ -10,6 +10,7 @@ class BottonNavBar extends StatelessWidget {
         items: const[
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.graduationCap, size: 20,), label: 'Topics'),
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userCircle, size: 20,), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userCircle, size: 20,), label: 'About')
 
         ],
         fixedColor: Colors.deepPurple[200],
