@@ -9,8 +9,8 @@ class BottonNavBar extends StatelessWidget {
     return BottomNavigationBar(
         items: const[
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.graduationCap, size: 20,), label: 'Topics'),
+          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userCircle, size: 20,), label: 'About'),
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userCircle, size: 20,), label: 'Profile'),
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userCircle, size: 20,), label: 'About')
 
         ],
         fixedColor: Colors.deepPurple[200],
@@ -18,7 +18,7 @@ class BottonNavBar extends StatelessWidget {
           switch (idx) {
             case 0:
               //do nothing
-            Navigator.pushNamed(context, '/topics');
+            // Navigator.pushNamed(context, '/topics');
               break;
             case 1:
               Navigator.pushNamed(context, '/about');

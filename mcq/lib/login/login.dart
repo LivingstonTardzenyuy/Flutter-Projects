@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           children: [
-            const FlutterLogo(size: 150,),
+            LoginButton(color: Colors.purple, icon: Icons.add, text: 'Anonymous', loginMethod: () {},)
           ],
         ),
       )
