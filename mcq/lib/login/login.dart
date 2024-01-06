@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mcq/services/auth.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -17,7 +19,7 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           children: [
-            LoginButton(color: Colors.purple, icon: Icons.add, text: 'Anonymous', loginMethod: () {},)
+            Flexible(child: LoginButton(color: Colors.deepPurple, icon: FontAwesomeIcons.userNinja, text: 'Continue as guess', loginMethod: AuthService().anonLogin,))
           ],
         ),
       )
@@ -43,7 +45,7 @@ class LoginButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: ElevatedButton.icon(
-          onPressed:() => loginMethod,
+          onPressed:() => loginMethod(),
           icon: Icon(
             icon,
             color: Colors.white, size: 20,

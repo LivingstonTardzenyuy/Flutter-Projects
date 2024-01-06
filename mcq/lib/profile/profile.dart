@@ -5,6 +5,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+        automaticallyImplyLeading: false,
+      ),
+      body: ElevatedButton(
+        onPressed: () {},
+        child: Text('Signout'),
+      ),
+    );
   }
 }
