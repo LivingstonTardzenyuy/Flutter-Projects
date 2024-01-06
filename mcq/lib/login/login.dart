@@ -54,7 +54,6 @@ class LoginButton extends StatelessWidget {
           style: TextButton.styleFrom(
             padding: const EdgeInsets.all(24),
             backgroundColor: color,
-
           ),
           label: Text(text)),
     );
