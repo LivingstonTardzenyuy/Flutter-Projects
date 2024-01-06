@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcq/services/auth.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -8,10 +9,13 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
+        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
       body: ElevatedButton(
-        onPressed: () {},
+        onPressed: () async {
+          await AuthService().anonSignOut();
+        },
         child: Text('Signout'),
       ),
     );
