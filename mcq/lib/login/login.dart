@@ -19,7 +19,8 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           children: [
-            Flexible(child: LoginButton(color: Colors.deepPurple, icon: FontAwesomeIcons.userNinja, text: 'Continue as guess', loginMethod: AuthService().anonLogin,))
+            Flexible(child: LoginButton(color: Colors.deepPurple, icon: FontAwesomeIcons.userNinja, text: 'Continue as guess', loginMethod: AuthService().anonLogin,)),
+            Flexible(child: LoginButton(color: Colors.blue, text: 'Sign in with Google', icon: FontAwesomeIcons.google, loginMethod: AuthService().googleLogin,))
           ],
         ),
       )
@@ -52,7 +53,8 @@ class LoginButton extends StatelessWidget {
           ),
           style: TextButton.styleFrom(
             padding: const EdgeInsets.all(24),
-            backgroundColor: color
+            backgroundColor: color,
+
           ),
           label: Text(text)),
     );
