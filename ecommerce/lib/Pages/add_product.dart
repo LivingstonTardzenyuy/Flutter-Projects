@@ -9,9 +9,15 @@ class AddProduct extends StatelessWidget {
       appBar: AppBar(
         title: Text('Add Product'),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
 
-        child: Text('Add product page'),
+            ],
+          ),
+        ),
       )
     );
   }
