@@ -1,6 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/material.dart'
-;
+import 'package:flutter/material.dart';
+
+String? selectedValue = '';
+
 class DropDownButton extends StatelessWidget {
   const DropDownButton({super.key});
 
@@ -29,7 +31,7 @@ class DropDownButton extends StatelessWidget {
               ),
             ))
                 .toList(),
-            value: 'item1',
+            value: selectedValue,
             onChanged: (String? value) {
 
             },

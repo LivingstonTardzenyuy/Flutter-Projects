@@ -54,10 +54,13 @@ class AddProduct extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DropDownButton(),
-                  DropDownButton(),
+                  Flexible(child: DropDownButton()),
+                  Flexible(child: DropDownButton()),
                 ],
               ),
+              SizedBox(height: 10,),
+              Text('Offer products', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+              DropDownButton(),
             ],
           ),
         ),
