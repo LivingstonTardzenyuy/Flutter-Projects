@@ -62,6 +62,20 @@ class AddProduct extends StatelessWidget {
               SizedBox(height: 10,),
               Text('Offer products', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
               DropDownButton(items: ['true', 'false'], selectedItemsText: 'true', onSelected: (selectedValue) {print(selectedValue);  },),
+
+              SizedBox(height: 15,),
+              Container(
+                width: double.infinity,
+                height: 40,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigoAccent,
+                    foregroundColor: Colors.white,
+
+                  ),
+                    onPressed: () {},
+                    child: Text('Add Product')),
+              )
             ],
           ),
         ),
