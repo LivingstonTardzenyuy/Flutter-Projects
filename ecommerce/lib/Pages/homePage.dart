@@ -20,10 +20,20 @@ class HomePage extends StatelessWidget {
                   subtitle: Text('Price-200'),
 
                 trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      print('pressed to delete item');
+                    },
                     icon: Icon(Icons.delete)),
               );
             }),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
+        onPressed: () {
+          print('Add new data');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
