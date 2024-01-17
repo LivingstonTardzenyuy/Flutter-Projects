@@ -7,11 +7,13 @@ class DropDownButton extends StatelessWidget {
   final List<String> items;
   final String? selectedValue;
   final String selectedItemsText;
+  final Function(String?) onSelected;
   const DropDownButton({
     super.key,
     required this.items,
     this.selectedValue,
     required this.selectedItemsText,
+    required this.onSelected,
   });
 
   @override
@@ -41,7 +43,7 @@ class DropDownButton extends StatelessWidget {
                 .toList(),
             value: selectedValue,
             onChanged: (String? value) {
-
+              onSelected(value);
             },
             buttonStyleData: const ButtonStyleData(
               padding: EdgeInsets.symmetric(horizontal: 16),
