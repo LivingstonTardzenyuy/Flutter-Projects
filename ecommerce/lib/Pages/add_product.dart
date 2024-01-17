@@ -10,12 +10,18 @@ class AddProduct extends StatelessWidget {
         title: Text('Add Product'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
+          child: Container(
+            width: double.maxFinite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
 
-            ],
+              children: [
+                Text('Add Products', style: TextStyle(fontSize: 20,color: Colors.indigoAccent), ),
+
+              ],
+            ),
           ),
         ),
       )
