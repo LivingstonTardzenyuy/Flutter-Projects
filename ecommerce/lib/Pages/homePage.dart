@@ -1,5 +1,6 @@
 import 'package:ecommerce/Pages/add_product.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class HomePage extends StatelessWidget {
@@ -34,6 +35,7 @@ class HomePage extends StatelessWidget {
         shape: CircleBorder(),
         onPressed: () {
           // Navigator.push(context, MaterialPageRoute(builder: (context) => AddProduct()));
+
           Get.to(AddProduct());
         },
         child: Icon(Icons.add),
