@@ -55,13 +55,13 @@ class AddProduct extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Flexible(child: DropDownButton(items: ['Cate1', 'Cate2', 'Cate2'], selectedItemsText: 'Cate1', onSelected: (selectedValue) {  },)),
-                  Flexible(child: DropDownButton(items: ['Brand1', 'Brand2', 'Brand3'], selectedItemsText: 'Brand1', onSelected: (selectedValue) {  },)),
+                  Flexible(child: DropDownButton(items: ['Cate1', 'Cate2', 'Cate2'], selectedItemsText: 'Cate1', onSelected: (selectedValue) { print(selectedValue); },)),
+                  Flexible(child: DropDownButton(items: ['Brand1', 'Brand2', 'Brand3'], selectedItemsText: 'Brand1', onSelected: (selectedValue) {print(selectedValue);  },)),
                 ],
               ),
               SizedBox(height: 10,),
               Text('Offer products', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-              DropDownButton(items: ['true', 'false'], selectedItemsText: 'true', onSelected: (selectedValue) {  },),
+              DropDownButton(items: ['true', 'false'], selectedItemsText: 'true', onSelected: (selectedValue) {print(selectedValue);  },),
             ],
           ),
         ),
