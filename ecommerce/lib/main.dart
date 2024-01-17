@@ -1,7 +1,9 @@
 import 'package:ecommerce/Pages/homePage.dart';
+import 'package:ecommerce/controller/home_controller.dart';
 import 'package:ecommerce/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 Future<void> main() async {
@@ -26,6 +28,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: HomePage(),
+      initialBinding: BindingsBuilder(() {
+        Get.lazyPut(() => HomeController());
+      }),
     );
   }
 }

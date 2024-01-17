@@ -10,42 +10,47 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-      builder: (GetxController controller) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Footware Admin'),
-            centerTitle: true,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListView.builder(
+      builder: (ctrl) {
+        if (ctrl != null && ctrl.test != null) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Footware Admin'),
+              centerTitle: true,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text('Title'),
                     subtitle: Text('Price-200'),
-
                     trailing: IconButton(
-                        onPressed: () {
-                          print('pressed to delete item');
-                        },
-                        icon: Icon(Icons.delete)),
+                      onPressed: () {
+                        // print('pressed to delete item');
+                        ctrl.testMethod();
+                        ctrl.test;
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
                   );
-                }),
-          ),
-
-          floatingActionButton: FloatingActionButton(
-            shape: CircleBorder(),
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => AddProduct()));
-
-              Get.to(AddProduct());
-            },
-            child: Icon(Icons.add),
-          ),
-        );
+                },
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              shape: CircleBorder(),
+              onPressed: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => AddProduct()));
+                Get.to(AddProduct());
+              },
+              child: Icon(Icons.add),
+            ),
+          );
+        } else {
+          // Handle the case when controller or its properties are null
+          return CircularProgressIndicator();
+        }
       },
-
     );
   }
 }
