@@ -1,3 +1,4 @@
+import 'package:ecommerce/Pages/add_product.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
         onPressed: () {
-          print('Add new data');
+          Navigator.push(context, MaterialPageRoute(builder: () => AddProduct()));
         },
         child: Icon(Icons.add),
       ),
