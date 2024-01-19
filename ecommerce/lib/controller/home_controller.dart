@@ -11,6 +11,6 @@ class HomeController extends GetxController{
   }
 
   testMethod() {
-    print('test value');
+    print('test  value');
   }
 }
