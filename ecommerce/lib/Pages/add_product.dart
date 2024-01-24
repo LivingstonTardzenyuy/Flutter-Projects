@@ -32,8 +32,7 @@ class AddProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-
-      builder: (GetxController controller) {
+      builder: (controller) {
         return Scaffold(
             appBar: AppBar(
               title: Text('Add Product'),
@@ -77,7 +76,9 @@ class AddProduct extends StatelessWidget {
                             foregroundColor: Colors.white,
 
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.addProducts();
+                          },
                           child: Text('Add Product')),
                     )
                   ],
