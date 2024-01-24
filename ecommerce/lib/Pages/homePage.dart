@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (ctrl) {
-        if (ctrl != null && ctrl.test != null) {
+        if (ctrl != null) {
           return Scaffold(
             appBar: AppBar(
               title: Text('Footware Admin'),
@@ -29,7 +29,6 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         // print('pressed to delete item');
                         ctrl.testMethod();
-                        ctrl.test;
                       },
                       icon: Icon(Icons.delete),
                     ),
