@@ -29,11 +29,6 @@ class AddProduct extends StatelessWidget {
   ];
 
   String? selectedValue;
-  TextEditingController productNameController = TextEditingController();
-  TextEditingController productDescriptionController = TextEditingController();
-  TextEditingController productImageController = TextEditingController();
-  TextEditingController productPriceController = TextEditingController();
-  
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(

@@ -8,9 +8,15 @@ class HomeController extends GetxController{
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference productCollection;
+
+  TextEditingController productNameController = TextEditingController();
+  TextEditingController productDescriptionController = TextEditingController();
+  TextEditingController productImageController = TextEditingController();
+  TextEditingController productPriceController = TextEditingController();
+
+
   @override
   void onInit() {
-
     // TODO: implement onInit
     productCollection = firestore.collection('Products');
     super.onInit();
@@ -21,12 +27,12 @@ class HomeController extends GetxController{
       DocumentReference doc = productCollection.doc();
       Products product = Products(
         id: doc.id,
-        name: 'test name from flutter',
+        name: productNameController.text,
         category: 'Boots',
-        description: 'test name from flutter',
-        price: 500,
+        description: productDescriptionController.text,
+        price: double.tryParse(productPriceController.text),
         brand: 'adidas',
-        image: 'image url',
+        image: productImageController.text,
         offer: true,
       );
 
