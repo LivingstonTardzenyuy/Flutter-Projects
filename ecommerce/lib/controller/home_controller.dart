@@ -14,7 +14,11 @@ class HomeController extends GetxController{
   }
 
   addProducts() {
-
+    DocumentReference doc = productCollection.doc(
+      {
+        'name': ''
+      }
+    );
   }
 
   testMethod() {
