@@ -14,20 +14,64 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return GetMaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//
+//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//         useMaterial3: true,
+//       ),
+//       home: HomePage(),
+//       initialBinding: BindingsBuilder(() {
+//         Get.lazyPut(() => HomeController());
+//       }),
+//     );
+//   }
+// }
 
-  // This widget is the root of your application.
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: FutureBuilder(
+        // Future that represents Firebase initialization
+        future: Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        ),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // Firebase initialization is complete, return the HomePage
+            return HomePage();
+          } else if (snapshot.hasError) {
+            // Handle initialization errors
+            return Scaffold(
+              body: Center(
+                child: Text('Error initializing Firebase: ${snapshot.error}'),
+              ),
+            );
+          } else {
+            // Show a loading indicator while Firebase is initializing
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
       initialBinding: BindingsBuilder(() {
         Get.lazyPut(() => HomeController());
       }),
