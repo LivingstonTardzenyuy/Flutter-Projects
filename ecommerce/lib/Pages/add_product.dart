@@ -7,8 +7,9 @@ import '../widgets/dropdown_button.dart';
 
 class AddProduct extends StatelessWidget {
   // const AddProduct({super.key});
- Widget addTextField(String label, String hintText, {int? maxline}){
+ Widget addTextField(String label, String hintText,{int? maxline, required TextEditingController controller}){
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -28,7 +29,11 @@ class AddProduct extends StatelessWidget {
   ];
 
   String? selectedValue;
-
+  TextEditingController productNameController = TextEditingController();
+  TextEditingController productDescriptionController = TextEditingController();
+  TextEditingController productImageController = TextEditingController();
+  TextEditingController productPriceController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
@@ -47,13 +52,13 @@ class AddProduct extends StatelessWidget {
                   children: [
                     Text('Add New Products', style: TextStyle(fontSize: 20,color: Colors.indigoAccent, fontWeight: FontWeight.bold), ),
                     SizedBox(height: 12,),
-                    addTextField('Enter name', 'Enter your product name'),
+                    addTextField('Enter name', 'Enter your product name', controller: productNameController),
                     SizedBox(height: 12,),
-                    addTextField('Enter Description', 'Enter product Description', maxline: 5),
+                    addTextField('Enter Description', 'Enter product Description',controller: productDescriptionController, maxline: 5),
                     SizedBox(height: 12,),
-                    addTextField('Image URL', 'Enter your image url'),
+                    addTextField('Image URL', 'Enter your image url', controller: productImageController),
                     SizedBox(height: 12,),
-                    addTextField('Product price', 'Enter your product price'),
+                    addTextField('Product price', 'Enter your product price', controller: productPriceController),
 
                     SizedBox(height: 10,),
                     Row(
