@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                       },
                       icon: IconButton(
                           onPressed: () {
-                            ctrl.deleteProducts;
+                            ctrl.deleteProducts(ctrl.product[index].id ?? '');
                           },
                           icon: Icon(Icons.delete)),
                     ),
