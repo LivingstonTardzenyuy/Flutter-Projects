@@ -42,7 +42,7 @@ class HomeController extends GetxController{
       final productJson = product.toJson();
       doc.set(productJson);       //setting our products to document
       Get.snackbar('Success', 'Product added successfully', colorText: Colors.green);
-
+      setValuesDefault();
     } catch (e){
       Get.snackbar('Error', 'Error adding product', colorText: Colors.red,);
       print(e);
@@ -51,5 +51,17 @@ class HomeController extends GetxController{
 
   testMethod() {
     print('test  value');
+  }
+
+  setValuesDefault(){
+    productNameController.clear();
+    productDescriptionController.clear();
+    productPriceController.clear();
+    productImageController.clear();
+
+    category = 'general';
+    brand = 'un branded';
+    offer = false;
+
   }
 }

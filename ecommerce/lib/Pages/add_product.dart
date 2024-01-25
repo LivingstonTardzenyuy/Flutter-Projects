@@ -5,7 +5,12 @@ import 'package:get/get.dart';
 
 import '../widgets/dropdown_button.dart';
 
-class AddProduct extends StatelessWidget {
+class AddProduct extends StatefulWidget {
+  @override
+  State<AddProduct> createState() => _AddProductState();
+}
+
+class _AddProductState extends State<AddProduct> {
   // const AddProduct({super.key});
  Widget addTextField(String label, String hintText,{int? maxline, required TextEditingController controller}){
     return TextField(
@@ -29,6 +34,7 @@ class AddProduct extends StatelessWidget {
   ];
 
   String? selectedValue;
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
@@ -59,13 +65,25 @@ class AddProduct extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Flexible(child: DropDownButton(items: ['Cate1', 'Cate2', 'Cate2'], selectedItemsText: 'Cate1', onSelected: (selectedValue) { print(selectedValue); },)),
-                        Flexible(child: DropDownButton(items: ['Brand1', 'Brand2', 'Brand3'], selectedItemsText: 'Brand1', onSelected: (selectedValue) {print(selectedValue);  },)),
+                        Flexible(child: DropDownButton(
+                          items: ['Cate1', 'Cate2', 'Cate2'],
+                          selectedItemsText: controller.category, onSelected: (selectedValue) { controller.category = selectedValue ?? 'general';
+                            controller.update();
+                            },)),
+
+                        Flexible(child: DropDownButton(
+                          items: ['Brand1', 'Brand2', 'Brand3'],
+                          selectedItemsText: controller.brand, onSelected: (selectedValue) {controller.brand = selectedValue ?? 'un branded';
+                            controller.update();
+                            },)),
                       ],
                     ),
                     SizedBox(height: 10,),
                     Text('Offer products', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                    DropDownButton(items: ['true', 'false'], selectedItemsText: 'true', onSelected: (selectedValue) {print(selectedValue);  },),
+                    DropDownButton(items: ['true', 'false'],
+                      selectedItemsText: controller.offer.toString(), onSelected: (selectedValue) {controller.offer = bool.tryParse(selectedValue ?? 'false') ?? false;
+                      controller.update();
+                      },),
                     SizedBox(height: 15,),
                     Container(
                       width: double.infinity,
