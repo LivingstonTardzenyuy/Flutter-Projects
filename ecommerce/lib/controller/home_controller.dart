@@ -17,6 +17,9 @@ class HomeController extends GetxController{
   String category = 'general';
   String brand = 'Un branded';
   bool offer = false;
+
+  List<Products> product = [];
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -65,4 +68,8 @@ class HomeController extends GetxController{
 
     update();
   }
+
+
+
+
 }
