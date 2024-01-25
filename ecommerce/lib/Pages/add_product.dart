@@ -47,13 +47,13 @@ class AddProduct extends StatelessWidget {
                   children: [
                     Text('Add New Products', style: TextStyle(fontSize: 20,color: Colors.indigoAccent, fontWeight: FontWeight.bold), ),
                     SizedBox(height: 12,),
-                    addTextField('Enter name', 'Enter your product name', controller: productNameController),
+                    addTextField('Enter name', 'Enter your product name', controller: controller.productNameController),
                     SizedBox(height: 12,),
-                    addTextField('Enter Description', 'Enter product Description',controller: productDescriptionController, maxline: 5),
+                    addTextField('Enter Description', 'Enter product Description',controller: controller.productDescriptionController, maxline: 5),
                     SizedBox(height: 12,),
-                    addTextField('Image URL', 'Enter your image url', controller: productImageController),
+                    addTextField('Image URL', 'Enter your image url', controller: controller.productImageController),
                     SizedBox(height: 12,),
-                    addTextField('Product price', 'Enter your product price', controller: productPriceController),
+                    addTextField('Product price', 'Enter your product price', controller: controller.productPriceController),
 
                     SizedBox(height: 10,),
                     Row(
