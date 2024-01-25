@@ -14,7 +14,9 @@ class HomeController extends GetxController{
   TextEditingController productImageController = TextEditingController();
   TextEditingController productPriceController = TextEditingController();
 
-
+  String category = 'general';
+  String brand = 'Un branded';
+  bool offer = false;
   @override
   void onInit() {
     // TODO: implement onInit
@@ -28,12 +30,12 @@ class HomeController extends GetxController{
       Products product = Products(
         id: doc.id,
         name: productNameController.text,
-        category: 'Boots',
+        category: category,
         description: productDescriptionController.text,
         price: double.tryParse(productPriceController.text),
-        brand: 'adidas',
+        brand: brand,
         image: productImageController.text,
-        offer: true,
+        offer: offer,
       );
 
       //converting product to Json
