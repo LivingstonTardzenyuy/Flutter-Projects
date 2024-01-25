@@ -78,12 +78,23 @@ class HomeController extends GetxController {
           Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
       product.clear();
       product.assignAll(retriveProducts);
-      update();
       Get.snackbar('Success', 'Products fetch successfully', colorText: Colors.green,);
     }
     catch (e) {
       Get.snackbar('Error', e.toString(), colorText: Colors.red,);
       print(e);
+    } finally{
+      update();
     }
+  }
+
+  deleteProducts(String id) async{
+    try{
+      await productCollection.doc(id).delete();
+      fetchProducts();
+    } catch(e){
+      print(e);
+    }
+
   }
 }
