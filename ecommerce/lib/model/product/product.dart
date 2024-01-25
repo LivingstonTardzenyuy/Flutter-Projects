@@ -23,7 +23,7 @@ class Products {
 
   @JsonKey(name: 'brand')
   String? brand;
-//df
+
   @JsonKey(name: 'offer')
   bool? offer;
 
