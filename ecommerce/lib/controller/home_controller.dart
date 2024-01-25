@@ -69,6 +69,10 @@ class HomeController extends GetxController{
     update();
   }
 
+  fetchProducts() async {
+    QuerySnapshot productSnapshot = await productCollection.get();
+    final List<Products> retriveProducts = productSnapshot.docs
+  }
 
 
 
