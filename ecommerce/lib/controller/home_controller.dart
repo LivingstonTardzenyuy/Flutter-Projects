@@ -63,5 +63,6 @@ class HomeController extends GetxController{
     brand = 'un branded';
     offer = false;
 
+    update();
   }
 }
