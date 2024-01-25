@@ -21,10 +21,10 @@ class HomeController extends GetxController {
   List<Products> product = [];
 
   @override
-  void onInit() {
+  Future<void> onInit() async{
     // TODO: implement onInit
     productCollection = firestore.collection('Products');
-    fetchProducts();
+    await fetchProducts();
     super.onInit();
   }
 
@@ -78,6 +78,7 @@ class HomeController extends GetxController {
           Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
       product.clear();
       product.assignAll(retriveProducts);
+      update();
       Get.snackbar('Success', 'Products fetch successfully', colorText: Colors.green,);
     }
     catch (e) {

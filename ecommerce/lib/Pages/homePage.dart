@@ -20,11 +20,11 @@ class HomePage extends StatelessWidget {
             body: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: ctrl.product.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text('Title'),
-                    subtitle: Text('Price-200'),
+                    title: Text(ctrl.product[index].name ?? '', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                    subtitle: Text((ctrl.product[index].price ?? 0).toString()),
                     trailing: IconButton(
                       onPressed: () {
                         // print('pressed to delete item');
