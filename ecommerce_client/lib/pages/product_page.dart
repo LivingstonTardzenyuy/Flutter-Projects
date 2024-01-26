@@ -21,10 +21,19 @@ class ProductPage extends StatelessWidget {
           SizedBox(
             height: 50,
             child: ListView.builder(
-                itemCount: 5,
+                itemCount: 15,
+                scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index){
-                return Text('Category');
-          }),)
+                return Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: Chip(label: Text('Category'),));
+          }),),
+
+          Row(
+            children: [
+
+            ],
+          )
         ],
       ),
     );
