@@ -34,7 +34,7 @@ class ProductPage extends StatelessWidget {
 
           Row(
             children: [
-              Flexible(child: MultiSelectDropdown()),
+              Flexible(child: Card(child: MultiSelectDropdown())),
               Flexible(
                 child: DropDownButton(items: ['Low to High', 'High to Low'],
                   selectedItemsText: 'Sort',
