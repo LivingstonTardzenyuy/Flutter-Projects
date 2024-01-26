@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/dropdown_botton.dart';
+import '../widgets/multi_select_dropdown.dart';
+
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
 
@@ -31,7 +34,12 @@ class ProductPage extends StatelessWidget {
 
           Row(
             children: [
-
+              Flexible(child: MultiSelectDropdown()),
+              Flexible(
+                child: DropDownButton(items: ['Low to High', 'High to Low'],
+                  selectedItemsText: 'Sort',
+                  onSelected: (selected) {  },),
+              ),
             ],
           )
         ],
