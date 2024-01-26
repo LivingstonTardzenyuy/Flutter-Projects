@@ -34,7 +34,24 @@ class LoginPage extends StatelessWidget {
                 labelText: 'Mobile Number',
                 hintText: 'Enter your mobile number'
               ),
-            )
+            ),
+
+            SizedBox(height: 35,),
+            Container(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.deepPurple,
+                  ),
+                  child: Text('Login')),
+            ),
+
+            SizedBox(height: 30,),
+            TextButton(
+                onPressed: () {},
+                child: Text('Register new account'))
           ],
         ),
       ),
