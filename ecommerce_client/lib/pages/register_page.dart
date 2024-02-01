@@ -30,10 +30,8 @@ class RegisterPage extends StatelessWidget {
 
                 prefixIcon: Icon(Icons.phone_android),
                 hintText: 'Enter your Name'
-                
               ),
             ),
-
             SizedBox(height: 30,),
             TextField(
               keyboardType: TextInputType.name,
