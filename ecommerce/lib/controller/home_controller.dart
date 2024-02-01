@@ -3,6 +3,7 @@ import 'package:ecommerce/model/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+// import 'package:ecommerce/model/product/product.g.dart';
 
 class HomeController extends GetxController {
 
@@ -18,6 +19,14 @@ class HomeController extends GetxController {
   String brand = 'Un branded';
   bool offer = false;
 
+  bool _isloading = false;
+  bool get isloading => _isloading;
+
+  void setLoading(bool value){
+    _isloading = value;
+    update();
+  }
+  
   List<Products> product = [];
 
   @override
@@ -41,7 +50,6 @@ class HomeController extends GetxController {
         image: productImageController.text,
         offer: offer,
       );
-
       //converting product to Json
       final productJson = product.toJson();
       doc.set(productJson); //setting our products to document
@@ -73,20 +81,27 @@ class HomeController extends GetxController {
 
   fetchProducts() async {
     try {
+      setLoading(true);
       QuerySnapshot productSnapshot = await productCollection.get();
-      final List<Products> retriveProducts = productSnapshot.docs.map((doc) =>
+      final List<Products> retrieveProducts = productSnapshot.docs.map((doc) =>
           Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
+
+      // Print products as JSON to the console
+      // print(productsToJson(retrieveProducts));
       product.clear();
-      product.assignAll(retriveProducts);
-      Get.snackbar('Success', 'Products fetch successfully', colorText: Colors.green,);
-    }
-    catch (e) {
-      Get.snackbar('Error', e.toString(), colorText: Colors.red,);
+      product.assignAll(retrieveProducts);
+
+      Get.snackbar('Success', 'Products fetched successfully', colorText: Colors.green);
+    } catch (e) {
+      Get.snackbar('Error', e.toString(), colorText: Colors.red);
       print(e);
-    } finally{
-      update();
+    } finally {
+      // update();
+      setLoading(false);
     }
+
   }
+
 
   deleteProducts(String id) async{
     try{
@@ -98,3 +113,4 @@ class HomeController extends GetxController {
 
   }
 }
+// 686689418

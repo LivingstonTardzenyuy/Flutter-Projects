@@ -1,8 +1,11 @@
-import 'package:ecommerce/Pages/add_product.dart';
-import 'package:ecommerce/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+
+import '../controller/home_controller.dart';
+import 'add_product.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,7 +14,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (ctrl) {
-        if (ctrl != null) {
+        if (ctrl.isloading) {
+          // Show a CircularProgressIndicator while data is being fetched
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Footware Admin'),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else {
+          // Data has been fetched, display the list
           return Scaffold(
             appBar: AppBar(
               title: Text('Footware Admin'),
@@ -27,14 +42,14 @@ class HomePage extends StatelessWidget {
                     subtitle: Text((ctrl.product?[index]?.price ?? 0).toString()),
                     trailing: IconButton(
                       onPressed: () {
-                        // print('pressed to delete item');
                         ctrl.testMethod();
                       },
                       icon: IconButton(
-                          onPressed: () {
-                            ctrl.deleteProducts(ctrl.product[index].id ?? '');
-                          },
-                          icon: Icon(Icons.delete)),
+                        onPressed: () {
+                          ctrl.deleteProducts(ctrl.product[index].id ?? '');
+                        },
+                        icon: Icon(Icons.delete),
+                      ),
                     ),
                   );
                 },
@@ -43,15 +58,11 @@ class HomePage extends StatelessWidget {
             floatingActionButton: FloatingActionButton(
               shape: CircleBorder(),
               onPressed: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context) => AddProduct()));
                 Get.to(AddProduct());
               },
               child: Icon(Icons.add),
             ),
           );
-        } else {
-          // Handle the case when controller or its properties are null
-          return CircularProgressIndicator();
         }
       },
     );
