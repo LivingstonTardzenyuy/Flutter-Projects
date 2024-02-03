@@ -6,7 +6,19 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
+      ),
+
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+      ),
     );
   }
 }
