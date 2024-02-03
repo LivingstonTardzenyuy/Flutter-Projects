@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:learning_getx/controller/first_page.dart';
 import 'package:learning_getx/controller/tap_controller.dart';
 
 
@@ -62,7 +63,8 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 25,),
             GestureDetector(
               onTap: () {
-                print('you tap me');
+                // print('you tap me');
+                Get.to(() => FirstPage());
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -72,24 +74,30 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   color: Color(0xFF89dad0),
                 ),
-                child: Center(child: Text("tap", style: TextStyle(color: Colors.white, fontSize: 25),)),
+                child: Center(child: Text("Go to next Page", style: TextStyle(color: Colors.white, fontSize: 25),)),
               ),
             ),
             SizedBox(height: 25,),
-            GestureDetector(
-              onTap: () {
-                print('you tap me');
+
+
+            GetBuilder<TapController>(
+              builder: (GetxController controller) {
+                return GestureDetector(
+                  onTap: () {
+                    print('you tap me');
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    width: double.maxFinite,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color(0xFF89dad0),
+                    ),
+                    child: Center(child: Text(controller.x.de, style: TextStyle(color: Colors.white, fontSize: 25),)),
+                  ),
+                );
               },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                width: double.maxFinite,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFF89dad0),
-                ),
-                child: Center(child: Text("tap", style: TextStyle(color: Colors.white, fontSize: 25),)),
-              ),
             ),
           ],
         ),
