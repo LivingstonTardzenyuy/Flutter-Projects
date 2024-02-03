@@ -35,6 +35,29 @@ class FirstPage extends StatelessWidget {
               ),
               child: Center(child: Text(controller.x.toString(), style: TextStyle(color: Colors.white, fontSize: 25),)),
             ),
+
+            SizedBox(height: 50,),
+            GetBuilder<TapController>(
+              builder: (controller) {
+                return GestureDetector(
+                  onTap: () {
+                    controller.decrease();
+                  },
+
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    width: double.maxFinite,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color(0xFF89dad0),
+                    ),
+                    child: Center(child: Text(controller.x.toString(), style: TextStyle(color: Colors.white, fontSize: 25),)),
+                  ),
+                );
+              }
+
+            ),
           ],
         ),
       ),
