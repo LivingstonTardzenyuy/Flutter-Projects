@@ -81,10 +81,11 @@ class HomePage extends StatelessWidget {
 
 
             GetBuilder<TapController>(
-              builder: (GetxController controller) {
+              builder: (controller) {
                 return GestureDetector(
                   onTap: () {
                     print('you tap me');
+                    controller.decrease();
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -94,7 +95,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFF89dad0),
                     ),
-                    child: Center(child: Text(controller.x.de, style: TextStyle(color: Colors.white, fontSize: 25),)),
+                    child: Center(child: Text(controller.x.toString(), style: TextStyle(color: Colors.white, fontSize: 25),)),
                   ),
                 );
               },
