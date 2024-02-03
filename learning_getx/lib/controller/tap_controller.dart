@@ -15,6 +15,6 @@ class TapController extends GetxController{
   void decrease() {
     _x--;
     update();
-    print(-x);
+    print(_x);
   }
 }
