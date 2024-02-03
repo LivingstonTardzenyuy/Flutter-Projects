@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:learning_getx/getX/third_page.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+class ThirdPage extends StatelessWidget {
+  const ThirdPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class SecondPage extends StatelessWidget {
 
       body: GestureDetector(
         onTap: () {
-          Get.to(() => ThirdPage());
+
         },
         child: Container(
           width: double.infinity,
