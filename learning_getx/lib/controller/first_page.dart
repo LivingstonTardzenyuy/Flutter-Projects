@@ -52,7 +52,7 @@ class FirstPage extends StatelessWidget {
               builder: (controller) {
                 return GestureDetector(
                   onTap: () {
-                    controller.decrease();
+                    controller.decreaseX();
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),

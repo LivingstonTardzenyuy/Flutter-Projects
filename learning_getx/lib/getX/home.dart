@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     print('you tap me');
-                    controller.decrease();
+                    controller.decreaseX();
                   },
                   child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     print('you tap me');
-                    controller.decrease();
+                    controller.decreaseX();
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),

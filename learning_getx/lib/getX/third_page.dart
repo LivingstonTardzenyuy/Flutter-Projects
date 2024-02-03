@@ -25,7 +25,7 @@ class ThirdPage extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               // print('you press me');
-              controller.decrease();
+              controller.decreaseX();
             },
             child: Container(
               width: double.infinity,
@@ -40,9 +40,9 @@ class ThirdPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFF89dad0),
                     ),
-                    child: Center(child: Text(controller.x.toString(), style: TextStyle(color: Colors.white, fontSize: 25),)),
+                    child: Center(child: Text("X value " + controller.x.toString(), style: TextStyle(color: Colors.white, fontSize: 25),)),
 
-                  )
+                  ),
                 ],
               ),
             ),
