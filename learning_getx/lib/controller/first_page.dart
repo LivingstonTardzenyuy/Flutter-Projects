@@ -33,7 +33,7 @@ class FirstPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: Color(0xFF89dad0),
               ),
-              child: Center(child: Text('', style: TextStyle(color: Colors.white, fontSize: 25),)),
+              child: Center(child: Text(controller.x.toString(), style: TextStyle(color: Colors.white, fontSize: 25),)),
             ),
           ],
         ),
