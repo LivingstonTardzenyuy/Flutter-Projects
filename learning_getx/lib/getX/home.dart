@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                print('you tap me');
+
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
