@@ -119,7 +119,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFF89dad0),
                     ),
-                    child: Center(child: Text('Go to Second Page', style: TextStyle(color: Colors.white, fontSize: 25),)),
+                    child: Center(child: Text('Second Page', style: TextStyle(color: Colors.white, fontSize: 25),)),
                   ),
                 );
               },
