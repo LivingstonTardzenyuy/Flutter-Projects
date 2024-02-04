@@ -12,6 +12,9 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Page'),
+      ),
         body: Container(
           width: double.maxFinite,
           height: double.maxFinite,
@@ -30,7 +33,7 @@ class SecondPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           color: Color(0xFF89dad0)
                       ),
-                      child: Center(child: Text('next Page', style: TextStyle(fontSize: 20, color: Colors.white),),),
+                      child: Center(child: Text('Go to Third Page', style: TextStyle(fontSize: 20, color: Colors.white),),),
                 ),
               ),
 
