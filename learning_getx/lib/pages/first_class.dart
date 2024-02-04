@@ -28,24 +28,27 @@ class FirstPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              width: double.maxFinite,
-              height: 100,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFF89dad0)
-              ),
-              child: Center(child: Text(controller.x.toString(), style: TextStyle(fontSize: 20, color: Colors.white),),),
+            GetBuilder<TapController>(
+              builder: (TapController controller) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  width: double.maxFinite,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color(0xFF89dad0)
+                  ),
+                  child: Center(child: Text(controller.x.toString(), style: TextStyle(fontSize: 20, color: Colors.white),),),
+                );
+              },
             ),
 
             SizedBox(height: 40,),
-            GetBuilder(
-              // builder: (context) () ,
-              builder: (GetxController controller) {
+            GetBuilder<TapController>(
+              builder: (TapController controller) {
                 return GestureDetector(
                   onTap: () {
-
+                    controller.decreaseX();
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -55,7 +58,7 @@ class FirstPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         color: Color(0xFF89dad0)
                     ),
-                    child: Center(child: Text(controller.x.toString(), style: TextStyle(fontSize: 20, color: Colors.white),),),
+                    child: Center(child: Text('Decrease x', style: TextStyle(fontSize: 20, color: Colors.white),),),
                   ),
                 );
               },
