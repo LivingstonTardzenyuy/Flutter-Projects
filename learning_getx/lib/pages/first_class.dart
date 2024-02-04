@@ -8,6 +8,10 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('First Class'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: Container(
         width: double.maxFinite,
