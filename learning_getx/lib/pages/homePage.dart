@@ -55,7 +55,6 @@ class HomePage extends StatelessWidget {
                         color: Color(0xFF89dad0)
                     ),
                     child: Center(child: Text('tap', style: TextStyle(fontSize: 20, color: Colors.white),),),
-
                   ),
                 );
               },
