@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:learning_getx/pages/homePage.dart';
 
 import '../controllers/tap_controller.dart';
 
@@ -23,7 +25,7 @@ class ThirdPage extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-
+                  Get.to(() => HomePage());
                 },
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -33,7 +35,7 @@ class ThirdPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFF89dad0)
                   ),
-                  child: Center(child: Text(controller.x.toString(), style: TextStyle(fontSize: 20, color: Colors.white),),),
+                  child: Center(child: Text(Get.find<TapController>().x.toString(), style: TextStyle(fontSize: 20, color: Colors.white),),),
                 ),
               ),
 
