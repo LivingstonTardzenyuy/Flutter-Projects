@@ -24,6 +24,17 @@ class ThirdPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.maxFinite,
+                height: 100,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color(0xFF89dad0)
+                ),
+                child: Center(child: Text('', style: TextStyle(fontSize: 20, color: Colors.white),),),
+              ),
+              SizedBox(height: 20,),
               Obx(() =>
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
