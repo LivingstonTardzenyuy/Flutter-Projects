@@ -32,7 +32,7 @@ class ThirdPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: Color(0xFF89dad0)
                 ),
-                child: Center(child: Text('', style: TextStyle(fontSize: 20, color: Colors.white),),),
+                child: Center(child: Text('Total = ' + Get.find<TapController>().z.toString(), style: TextStyle(fontSize: 20, color: Colors.white),),),
               ),
               SizedBox(height: 20,),
               Obx(() =>
