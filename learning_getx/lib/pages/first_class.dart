@@ -16,6 +16,7 @@ class FirstPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               width: double.maxFinite,
               height: 100,
               decoration: BoxDecoration(
