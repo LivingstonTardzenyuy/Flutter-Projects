@@ -6,12 +6,24 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('First Class'),
+      ),
       body: Container(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
+            Container(
+              width: double.maxFinite,
+              height: 100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color(0xFF89dad0)
+              ),
+              child: Center(child: Text('tap', style: TextStyle(fontSize: 20, color: Colors.white),),),
+            ),
           ],
         ),
       )
