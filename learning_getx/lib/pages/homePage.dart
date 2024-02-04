@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:learning_getx/controllers/tap_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TapController controller = Get.put(TapController());
+
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.all(20),
@@ -15,7 +20,7 @@ class HomePage extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                print('click me');
+                controller.increaseX();
               },
               child: Container(
                 width: double.maxFinite,
@@ -24,10 +29,11 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: Color(0xFF89dad0)
                 ),
-                child: Center(child: Text('tap', style: TextStyle(fontSize: 20, color: Colors.white),),),
+                child: Center(child: Text('me', style: TextStyle(fontSize: 20, color: Colors.white),),),
 
               ),
             ),
+            SizedBox(height: 20,),
             GestureDetector(
               onTap: () {
                 print('click me');
@@ -43,6 +49,7 @@ class HomePage extends StatelessWidget {
 
               ),
             ),
+            SizedBox(height: 20,),
             GestureDetector(
               onTap: () {
                 print('click me');
@@ -58,6 +65,7 @@ class HomePage extends StatelessWidget {
 
               ),
             ),
+            SizedBox(height: 20,),
             GestureDetector(
               onTap: () {
                 print('click me');
