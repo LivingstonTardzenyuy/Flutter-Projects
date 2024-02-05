@@ -6,16 +6,20 @@ class PdfReader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PDFView(
-        filePath: 'assets/2021.pdf',
-        // onPageChanged: (int page, int total) {
-        //   print('Page $page of $total');
-        // },
-        onViewCreated: (PDFViewController controller) {
-          // Do something with the controller if needed.
-        },
-      ),
-    )
+    // return Scaffold(
+      // body: PDFView(
+      //   filePath: 'assets/2021.pdf',
+      //   // onPageChanged: (int page, int total) {
+      //   //   print('Page $page of $total');
+      //   // },
+      //   onViewCreated: (PDFViewController controller) {
+      //     // Do something with the controller if needed.
+      //   },
+      // ),
+      body:
+      return Scaffold(
+         body: SfPdfViewer.asset(
+            'assets/2021.pdf'));}
+    // );
   }
-}
+// }
