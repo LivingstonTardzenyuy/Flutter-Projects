@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/dropdown_botton.dart';
 import '../widgets/multi_select_dropdown.dart';
+import '../widgets/product_card.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -69,15 +70,7 @@ class ProductPage extends StatelessWidget {
               ),
               itemCount: 14, // Change itemCount to the number of grid items you want
               itemBuilder: (context, index) {
-                return Container(
-                  color: Colors.red,
-                  child: Center(
-                    child: Text(
-                      'Grid Item $index',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                );
+                return ProductCard();
               },
             ),
           ),
