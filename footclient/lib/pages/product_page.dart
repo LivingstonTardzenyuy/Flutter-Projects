@@ -32,6 +32,7 @@ class ProductPage extends StatelessWidget {
                     child: Chip(label: Text('Category'),));
           }),),
 
+          SizedBox(height: 20,),
           Row(
             children: [
               Flexible(child: Card(child: MultiSelectDropdown())),
