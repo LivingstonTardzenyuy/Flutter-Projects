@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:footclient/pages/product_page.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -50,7 +53,9 @@ class RegisterPage extends StatelessWidget {
             Container(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.deepPurple
@@ -59,7 +64,9 @@ class RegisterPage extends StatelessWidget {
             ),
 
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => ProductPage());
+                },
                 child: Text('Login', style: TextStyle(fontSize: 18),))
           ],
         ),
