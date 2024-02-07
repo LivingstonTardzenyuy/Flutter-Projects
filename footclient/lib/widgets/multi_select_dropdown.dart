@@ -1,20 +1,21 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
-class MultiSelectDropdown extends StatelessWidget {
+class MultiSelectDropdown extends StatefulWidget {
   final List<String> items;
   final Function(List<String>) onSelectionChanged;
+
   MultiSelectDropdown({
     required this.items,
     required this.onSelectionChanged,
-});
-  // final List<String> selectedItems = [];
+  });
 
+  @override
+  _MultiSelectDropdownState createState() => _MultiSelectDropdownState();
+}
 
-  // void onSelectionChanged(List<String> selectedItems) {
-  //   // Do something with the selected items, such as updating state
-  //   print('Selected items: $selectedItems');
-  // }
+class _MultiSelectDropdownState extends State<MultiSelectDropdown> {
+  List<String> selectedItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class MultiSelectDropdown extends StatelessWidget {
               color: Theme.of(context).hintColor,
             ),
           ),
-          items: items.map((item) {
+          items: widget.items.map((item) {
             return DropdownMenuItem(
               value: item,
               //disable default onTap to avoid closing menu when selecting an item
@@ -39,8 +40,10 @@ class MultiSelectDropdown extends StatelessWidget {
                   final isSelected = selectedItems.contains(item);
                   return InkWell(
                     onTap: () {
-                      isSelected ? selectedItems.remove(item) : selectedItems.add(item);
-                      onSelectionChanged(selectedItems); // Call the onSelectionChanged method
+                      setState(() {
+                        isSelected ? selectedItems.remove(item) : selectedItems.add(item);
+                      });
+                      widget.onSelectionChanged(selectedItems); // Call the onSelectionChanged method
                       menuSetState(() {});
                     },
                     child: Container(
@@ -73,21 +76,19 @@ class MultiSelectDropdown extends StatelessWidget {
           value: selectedItems.isEmpty ? null : selectedItems.last,
           onChanged: (value) {},
           selectedItemBuilder: (context) {
-            return items.map(
-                  (item) {
-                return Container(
-                  alignment: AlignmentDirectional.center,
-                  child: Text(
-                    selectedItems.join(', '),
-                    style: const TextStyle(
-                      fontSize: 14,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    maxLines: 1,
+            return [
+              Container(
+                alignment: AlignmentDirectional.center,
+                child: Text(
+                  selectedItems.join(', '),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                );
-              },
-            ).toList();
+                  maxLines: 1,
+                ),
+              ),
+            ];
           },
           buttonStyleData: const ButtonStyleData(
             padding: EdgeInsets.only(left: 16, right: 8),
