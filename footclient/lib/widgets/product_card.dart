@@ -10,7 +10,8 @@ class ProductCard extends StatelessWidget {
     required this.imageUrl,
     required this.price,
     required this.offerTag
-})
+});
+
   @override
   Widget build(BuildContext context) {
     return Card(
