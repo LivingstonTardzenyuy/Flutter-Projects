@@ -28,7 +28,7 @@ class ProductPage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index){
                 return Padding(
-                    padding: const EdgeInsets.all(6),
+                    padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
                     child: Chip(label: Text('Category'),));
           }),),
 
