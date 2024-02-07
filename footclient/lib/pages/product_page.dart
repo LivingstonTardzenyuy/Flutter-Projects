@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footclient/pages/product_description.dart';
 
 import '../widgets/dropdown_botton.dart';
 import '../widgets/multi_select_dropdown.dart';
@@ -75,6 +76,9 @@ class ProductPage extends StatelessWidget {
                   imageUrl: 'https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2020-04/shoee.jpg',
                   price: 250,
                   offerTag: '240',
+                  onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDescription()));
+                  },
                 );
               },
             ),
