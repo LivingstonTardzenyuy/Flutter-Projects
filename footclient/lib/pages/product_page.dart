@@ -70,7 +70,12 @@ class ProductPage extends StatelessWidget {
               ),
               itemCount: 14, // Change itemCount to the number of grid items you want
               itemBuilder: (context, index) {
-                return ProductCard();
+                return ProductCard(
+                  name: 'Banana',
+                  imageUrl: 'https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2020-04/shoee.jpg',
+                  price: 250,
+                  offerTag: '240',
+                );
               },
             ),
           ),
