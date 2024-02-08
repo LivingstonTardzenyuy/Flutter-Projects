@@ -13,4 +13,11 @@ class LoginController extends GetxController{
   }
 
 
+  void addUser() {
+    try {
+      DocumentReference doc = userCollection.doc();
+      User user =
+    }
+  }
+
 }
