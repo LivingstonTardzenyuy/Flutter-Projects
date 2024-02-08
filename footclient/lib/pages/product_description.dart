@@ -41,7 +41,8 @@ class ProductDescription extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    hintText: 'dfkdfjdklfjdkl kj klj ',
+                    // hintText: 'dfkdfjdklfjdkl kj klj ',
+                    labelText: 'Enter your Address detailly'
                     
                   ),
                 ),
