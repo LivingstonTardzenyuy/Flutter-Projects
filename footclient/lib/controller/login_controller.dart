@@ -29,7 +29,7 @@ class LoginController extends GetxController{
       Get.snackbar('Success', 'User added Successfully', colorText: Colors.green);
 
     } catch(e){
-      Get.snackbar('Error', 'Error in adding', colorText: Colors.red);
+      Get.snackbar('Error', e.toString(), colorText: Colors.red);
       print(e);
 
     }
