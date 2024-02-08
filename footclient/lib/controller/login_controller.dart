@@ -11,4 +11,6 @@ class LoginController extends GetxController{
     super.onInit();
     userCollection = firestore.collection('users');
   }
+
+
 }
