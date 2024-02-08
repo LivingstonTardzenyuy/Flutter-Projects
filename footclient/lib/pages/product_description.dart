@@ -33,7 +33,8 @@ class ProductDescription extends StatelessWidget {
                 Text('Product Description', style: TextStyle(fontSize: 18),),
                 SizedBox(height: 10,),
                 Text('300 fcfa', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.yellow),),
-          
+
+                SizedBox(height: 20,),
                 TextField(
                   textAlign: TextAlign.center,
                   maxLines: 4,
