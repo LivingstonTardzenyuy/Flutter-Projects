@@ -57,7 +57,8 @@ class RegisterPage extends StatelessWidget {
                 ),
 
                 SizedBox(height: 30,),
-                OTP(otpFieldControllerV2: controller.otpController, ),
+                OTP(otpFieldControllerV2: controller.otpController, isVisibleOtp: controller.otpFieldShow,),
+                SizedBox(height: 15,),
                 Container(
                   width: double.infinity,
                   child: ElevatedButton(

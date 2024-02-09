@@ -15,6 +15,8 @@ class LoginController extends GetxController{
   TextEditingController registerNameCtrl = TextEditingController();
   TextEditingController enterNumberCtrl = TextEditingController();
   OtpFieldControllerV2 otpController = OtpFieldControllerV2();
+  bool otpFieldShow = false;
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -53,7 +55,7 @@ class LoginController extends GetxController{
 
     // will send otp and check if it's send successfully or not.
     if (otp != null) {
-
+        otpFieldShow = true;
       Get.snackbar('Success', 'OTP sent succesffully', colorText: Colors.green);
     } else {
       Get.snackbar('Error', 'OTP not sent!', colorText: Colors.red);
