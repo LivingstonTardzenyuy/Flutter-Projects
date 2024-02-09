@@ -60,13 +60,13 @@ class RegisterPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                         controller.addUser();
+                         controller.sendOTP();
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepPurple
                       ),
-                      child: Text('Register')),
+                      child: Text('Send OTP')),
                 ),
 
                 TextButton(

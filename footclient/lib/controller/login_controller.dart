@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +45,15 @@ class LoginController extends GetxController{
   }
 
   void sendOTP() {
+    final random = Random();
+    int otp = 1000 + random.nextInt(9000);   // four digits
+    print(otp);
 
+    // will send otp and check if it's send successfully or not.
+    if (otp != null) {
+      Get.snackbar('Success', 'OTP sent succesffully', colorText: Colors.green);
+    } else {
+      Get.snackbar('Error', 'OTP not sent!', colorText: Colors.red);
+    }
   }
 }
