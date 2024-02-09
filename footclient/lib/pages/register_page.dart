@@ -29,6 +29,7 @@ class RegisterPage extends StatelessWidget {
                 ),),
                 SizedBox(height: 30,),
                 TextField(
+                  controller: controller.registerNameCtrl,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -41,7 +42,8 @@ class RegisterPage extends StatelessWidget {
                 ),
                 SizedBox(height: 30,),
                 TextField(
-                  keyboardType: TextInputType.name,
+                  keyboardType: TextInputType.number,
+                  controller: controller.enterNumberCtrl,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -64,7 +66,7 @@ class RegisterPage extends StatelessWidget {
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepPurple
                       ),
-                      child: Text('Send OTP')),
+                      child: Text('Register')),
                 ),
 
                 TextButton(
@@ -78,5 +80,5 @@ class RegisterPage extends StatelessWidget {
         );
       }
     );
-  }
+    }
 }

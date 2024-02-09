@@ -8,6 +8,9 @@ class LoginController extends GetxController{
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference userCollection;
 
+
+  TextEditingController registerNameCtrl = TextEditingController();
+  TextEditingController enterNumberCtrl = TextEditingController();
   @override
   void onInit() {
     // TODO: implement onInit
@@ -21,8 +24,8 @@ class LoginController extends GetxController{
       DocumentReference doc = userCollection.doc();
       User user = User(
         id: doc.id,
-        name: 'kongnyuy',
-        number: 683487373,
+        name: registerNameCtrl.text,
+        number: int.tryParse(enterNumberCtrl.text),
       );
       final userJson = user.toJson();
       doc.set(userJson);
