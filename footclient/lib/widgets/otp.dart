@@ -11,7 +11,7 @@ class OTP extends StatelessWidget {
   Widget build(BuildContext context) {
     return OTPTextFieldV2(
       controller: otpFieldControllerV2,
-      length: 5,
+      length: 4,
       width: MediaQuery.of(context).size.width,
       textFieldAlignment: MainAxisAlignment.spaceAround,
       fieldWidth: 45,
