@@ -21,6 +21,9 @@ class LoginController extends GetxController{
 
   void addUser() {
     try {
+      if(registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty){
+        Get.snackbar('Error', 'Please fill the field', colorText: Colors.red);
+      }
       DocumentReference doc = userCollection.doc();
       User user = User(
         id: doc.id,
