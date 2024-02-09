@@ -51,6 +51,7 @@ class LoginController extends GetxController{
 
     // will send otp and check if it's send successfully or not.
     if (otp != null) {
+
       Get.snackbar('Success', 'OTP sent succesffully', colorText: Colors.green);
     } else {
       Get.snackbar('Error', 'OTP not sent!', colorText: Colors.red);
