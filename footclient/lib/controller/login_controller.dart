@@ -23,6 +23,7 @@ class LoginController extends GetxController{
     try {
       if(registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty){
         Get.snackbar('Error', 'Please fill the field', colorText: Colors.red);
+        return;  // must put return so it stop exectuing the method
       }
       DocumentReference doc = userCollection.doc();
       User user = User(
@@ -39,5 +40,9 @@ class LoginController extends GetxController{
       print(e);
 
     }
+  }
+
+  void sendOTP() {
+
   }
 }
