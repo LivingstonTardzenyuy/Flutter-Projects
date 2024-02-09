@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../controller/login_controller.dart';
+import '../widgets/otp.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -56,6 +57,7 @@ class RegisterPage extends StatelessWidget {
                 ),
 
                 SizedBox(height: 30,),
+                OTP(otpFieldControllerV2: controller.otpController, ),
                 Container(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -69,6 +71,7 @@ class RegisterPage extends StatelessWidget {
                       child: Text('Send OTP')),
                 ),
 
+                SizedBox(height: 15,),
                 TextButton(
                     onPressed: () {
                       Get.to(() => ProductPage());

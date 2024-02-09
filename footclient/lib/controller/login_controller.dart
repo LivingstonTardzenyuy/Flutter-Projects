@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:otp_text_field_v2/otp_field_v2.dart';
 
 import '../models/user.dart';
 
@@ -13,6 +14,7 @@ class LoginController extends GetxController{
 
   TextEditingController registerNameCtrl = TextEditingController();
   TextEditingController enterNumberCtrl = TextEditingController();
+  OtpFieldControllerV2 otpController = OtpFieldControllerV2();
   @override
   void onInit() {
     // TODO: implement onInit
