@@ -63,6 +63,7 @@ class RegisterPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
+
                          controller.sendOTP();
                       },
                       style: ElevatedButton.styleFrom(
