@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:footclient/pages/product_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../controller/login_controller.dart';
 import '../widgets/otp.dart';
+
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -15,7 +15,7 @@ class RegisterPage extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           body: Container(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15) ,
             width: double.maxFinite,
             decoration: BoxDecoration(
                 color: Colors.blueGrey[50]
