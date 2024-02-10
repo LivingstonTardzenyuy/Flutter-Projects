@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +21,7 @@ class LoginController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     userCollection = firestore.collection('users');
+    sendOTP();
   }
 
 
@@ -57,6 +57,7 @@ class LoginController extends GetxController{
     if (otp != null) {
       otpFieldShow = true;
       Get.snackbar('Success', 'OTP sent succesffully', colorText: Colors.green);
+      update();
     } else {
       Get.snackbar('Error', 'OTP not sent!', colorText: Colors.red);
     }
