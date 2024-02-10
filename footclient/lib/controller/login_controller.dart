@@ -6,30 +6,26 @@ import 'package:otp_text_field_v2/otp_field_v2.dart';
 
 import '../models/user.dart';
 
-class LoginController extends GetxController{
+class LoginController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference userCollection;
-
 
   TextEditingController registerNameCtrl = TextEditingController();
   TextEditingController enterNumberCtrl = TextEditingController();
   OtpFieldControllerV2 otpController = OtpFieldControllerV2();
-  bool otpFieldShow = false;
+  bool otpFieldShow = false; // Initialize as false
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     userCollection = firestore.collection('users');
-    sendOTP();
   }
-
 
   void addUser() {
     try {
-      if(registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty){
+      if (registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty) {
         Get.snackbar('Error', 'Please fill the field', colorText: Colors.red);
-        return;  // must put return so it stop exectuing the method
+        return;
       }
       DocumentReference doc = userCollection.doc();
       User user = User(
@@ -40,24 +36,22 @@ class LoginController extends GetxController{
       final userJson = user.toJson();
       doc.set(userJson);
       Get.snackbar('Success', 'User added Successfully', colorText: Colors.green);
-
-    } catch(e){
+    } catch (e) {
       Get.snackbar('Error', e.toString(), colorText: Colors.red);
       print(e);
-
     }
   }
 
   void sendOTP() {
     final random = Random();
-    int otp = 1000 + random.nextInt(9000);   // four digits
+    int otp = 1000 + random.nextInt(9000); // four digits
     print(otp);
 
     // will send otp and check if it's send successfully or not.
     if (otp != null) {
-      otpFieldShow = true;
-      Get.snackbar('Success', 'OTP sent succesffully', colorText: Colors.green);
-      update();
+      Get.snackbar('Success', 'OTP sent successfully', colorText: Colors.green);
+      otpFieldShow = true; // Set otpFieldShow to true
+      update(); // Trigger UI update
     } else {
       Get.snackbar('Error', 'OTP not sent!', colorText: Colors.red);
     }
