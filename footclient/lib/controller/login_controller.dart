@@ -44,6 +44,11 @@ class LoginController extends GetxController {
 
   void sendOTP() {
     try {
+        if (registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty) {
+          Get.snackbar('Error', 'Please fill the field', colorText: Colors.red);
+          return;
+        }
+
       final random = Random();
       int otp = 1000 + random.nextInt(9000); // four digits
       print(otp);
