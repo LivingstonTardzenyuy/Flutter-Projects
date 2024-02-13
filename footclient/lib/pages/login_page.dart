@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -14,7 +13,6 @@ class LoginPage extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: Cro,
           children: [
             Text('Welcome Back!',
             style: TextStyle(
