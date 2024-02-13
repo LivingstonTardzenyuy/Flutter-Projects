@@ -25,20 +25,25 @@ class LoginController extends GetxController {
 
   void addUser() {
     try {
-      if (registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty) {
-        Get.snackbar('Error', 'Please fill the field', colorText: Colors.red);
-        return;
+
+      // if (registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty) {
+      //   Get.snackbar('Error', 'Please fill the field', colorText: Colors.red);
+      //   return;
+      // }
+      if (otpSend == otpEnter){
+        DocumentReference doc = userCollection.doc();
+        User user = User(
+          id: doc.id,
+          name: registerNameCtrl.text,
+          number: int.tryParse(enterNumberCtrl.text),
+        );
+        final userJson = user.toJson();
+        doc.set(userJson);
+        Get.snackbar('Success', 'User added Successfully', colorText: Colors.green);
+        } else {
+        Get.snackbar('Error', 'OTP is not correct', colorText: Colors.red);
       }
-      DocumentReference doc = userCollection.doc();
-      User user = User(
-        id: doc.id,
-        name: registerNameCtrl.text,
-        number: int.tryParse(enterNumberCtrl.text),
-      );
-      final userJson = user.toJson();
-      doc.set(userJson);
-      Get.snackbar('Success', 'User added Successfully', colorText: Colors.green);
-    } catch (e) {
+      } catch (e) {
       Get.snackbar('Error', e.toString(), colorText: Colors.red);
       print(e);
     }
@@ -69,6 +74,5 @@ class LoginController extends GetxController {
     } finally{
       update();
     }
-
   }
 }
