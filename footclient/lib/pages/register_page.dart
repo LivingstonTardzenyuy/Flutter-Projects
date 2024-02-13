@@ -70,7 +70,7 @@ class RegisterPage extends StatelessWidget {
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepPurple
                       ),
-                      child: (controller.otpFieldShow == true) ? 'Send OTP' : 'Register'
+                      child: Text(controller.otpFieldShow ? 'Register' : 'Send OTP')
                   ),
                 ),
 
