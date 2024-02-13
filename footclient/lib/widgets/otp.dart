@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:otp_text_field_v2/otp_field_v2.dart';
 
@@ -5,9 +7,12 @@ class OTP extends StatelessWidget {
   OTP({
     required this.otpFieldControllerV2,
     required this.isVisibleOtp,
+    required this.onComplete,
   });
   final OtpFieldControllerV2 otpFieldControllerV2;
   final bool isVisibleOtp;
+  Function (String?) onComplete;
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,8 @@ class OTP extends StatelessWidget {
           print("Changed: " + pin);
         },
         onCompleted: (pin) {
-          print("Completed: " + pin);
+          // print("Completed: " + pin);
+          onComplete(pin);
         },
       ),
     );

@@ -14,6 +14,8 @@ class LoginController extends GetxController {
   TextEditingController enterNumberCtrl = TextEditingController();
   OtpFieldControllerV2 otpController = OtpFieldControllerV2();
   bool otpFieldShow = false; // Initialize as false
+  int? otpSend;
+  int? otpEnter;
 
   @override
   void onInit() {
@@ -57,6 +59,7 @@ class LoginController extends GetxController {
       if (otp != null) {
         Get.snackbar('Success', 'OTP sent successfully', colorText: Colors.green);
         otpFieldShow = true; // Set otpFieldShow to true
+        otpSend = otp;
         update(); // Trigger UI update
       } else {
         Get.snackbar('Error', 'OTP not sent!', colorText: Colors.red);
