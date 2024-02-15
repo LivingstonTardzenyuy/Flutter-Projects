@@ -13,7 +13,6 @@ class OTP extends StatelessWidget {
   final bool isVisibleOtp;
   Function (String?) onComplete;
 
-
   @override
   Widget build(BuildContext context) {
     return Visibility(
