@@ -83,7 +83,6 @@ class RegisterPage extends StatelessWidget {
                       child: Text(controller.otpFieldShow ? 'Register' : 'Send OTP')
                   ),
                 ),
-
                 SizedBox(height: 15,),
                 TextButton(
                     onPressed: () {
