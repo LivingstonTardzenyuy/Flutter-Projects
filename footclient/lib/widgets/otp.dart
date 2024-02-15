@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:otp_text_field_v2/otp_field_v2.dart';
 
