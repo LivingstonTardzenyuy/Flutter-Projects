@@ -71,6 +71,7 @@ class RegisterPage extends StatelessWidget {
                       onPressed: () {
                         if(controller.otpFieldShow){
                           controller.addUser();
+                          Get.to((ProductPage()));
                         } else {
                           controller.sendOTP();
                         }
