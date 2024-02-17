@@ -88,7 +88,7 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(height: 15,),
                 TextButton(
                     onPressed: () {
-                      Get.to(() => ProductPage());
+                      Get.to(() => LoginPage());
                     },
                     child: Text('Login', style: TextStyle(fontSize: 18),))
               ],
