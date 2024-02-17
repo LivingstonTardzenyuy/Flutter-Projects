@@ -27,6 +27,7 @@ class LoginPage extends StatelessWidget {
 
                 SizedBox(height: 20,),
                 TextField(
+                  controller: controller.enterNumberCtrl,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(

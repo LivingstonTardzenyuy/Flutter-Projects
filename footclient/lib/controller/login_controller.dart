@@ -45,8 +45,6 @@ class LoginController extends GetxController {
       print(e);
     }
   }
-
-
   void sendOTP() {
     try {
         if (registerNameCtrl.text.isEmpty || enterNumberCtrl.text.isEmpty) {
@@ -73,4 +71,5 @@ class LoginController extends GetxController {
       update();
     }
   }
+
 }
