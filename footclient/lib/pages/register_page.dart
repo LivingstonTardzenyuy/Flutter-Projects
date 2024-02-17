@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../controller/login_controller.dart';
 import '../widgets/otp.dart';
+import 'login_page.dart';
 
 
 class RegisterPage extends StatelessWidget {
@@ -71,7 +72,7 @@ class RegisterPage extends StatelessWidget {
                       onPressed: () {
                         if(controller.otpFieldShow){
                           controller.addUser();
-                          Get.to((ProductPage()));
+                          Get.to((LoginPage()));
                         } else {
                           controller.sendOTP();
                         }
