@@ -17,6 +17,7 @@ class LoginController extends GetxController {
   int? otpSend;
   int? otpEnter;
 
+
   @override
   void onInit() {
     super.onInit();
