@@ -55,7 +55,6 @@ class LoginController extends GetxController {
       final random = Random();
       int otp = 1000 + random.nextInt(9000); // four digits
       print(otp);
-
       // will send otp and check if it's send successfully or not.
       if (otp != null) {
         Get.snackbar('Success', 'OTP sent successfully', colorText: Colors.green);
@@ -71,5 +70,4 @@ class LoginController extends GetxController {
       update();
     }
   }
-
 }
