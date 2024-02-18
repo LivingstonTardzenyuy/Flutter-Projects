@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         controller.loginWithPhone();
-                        Get.to((ProductPage()));
+                        // Get.to((ProductPage()));
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,

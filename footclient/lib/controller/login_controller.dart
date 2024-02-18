@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:footclient/pages/product_page.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:otp_text_field_v2/otp_field_v2.dart';
@@ -86,6 +87,8 @@ class LoginController extends GetxController {
 
           box.write('loginUser', userData);     // passing the data of the log in user from backend to frontEnd.
           enterNumberCtrl.clear();
+          Get.to((ProductPage()));
+
           Get.snackbar('Success', 'Login Successfull with number $phoneNumber', colorText: Colors.green);
         } else {
           Get.snackbar('Error', 'User not found, please register', colorText: Colors.red);
