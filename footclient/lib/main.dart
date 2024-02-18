@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:footclient/controller/login_controller.dart';
+import 'package:footclient/pages/login_page.dart';
 import 'package:footclient/pages/register_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
      colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RegisterPage(),
+      home: const LoginPage(),
     );
   }
 }

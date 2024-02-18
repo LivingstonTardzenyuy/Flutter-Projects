@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footclient/controller/login_controller.dart';
 import 'package:footclient/pages/product_page.dart';
+import 'package:footclient/pages/register_page.dart';
 import 'package:get/get.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -57,7 +58,9 @@ class LoginPage extends StatelessWidget {
 
                 SizedBox(height: 30,),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to((RegisterPage()));
+                    },
                     child: Text('Register new account'))
               ],
             ),

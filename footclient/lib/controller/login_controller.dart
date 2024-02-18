@@ -2,11 +2,14 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:otp_text_field_v2/otp_field_v2.dart';
 
 import '../models/user.dart';
 
 class LoginController extends GetxController {
+
+  GetStorage box =  GetStorage();      // allowed us to access data from the firestore db
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference userCollection;
 
@@ -80,6 +83,9 @@ class LoginController extends GetxController {
           print(querySnapshot);
           var userDoc = querySnapshot.docs.first;
           var userData = userDoc.data() as Map<String, dynamic>;
+
+          box.write('loginUser', userData);     // passing the data of the log in user from backend to frontEnd.
+          enterNumberCtrl.clear();
           Get.snackbar('Success', 'Login Successfull with number $phoneNumber', colorText: Colors.green);
         } else {
           Get.snackbar('Error', 'User not found, please register', colorText: Colors.red);
