@@ -13,7 +13,7 @@ import 'firebase_options.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main()  async {
-  await GetStorage.init();
+  await GetStorage.init(); // helps to log in a user that already registed in the app
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

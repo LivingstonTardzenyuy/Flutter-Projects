@@ -21,12 +21,15 @@ class LoginController extends GetxController {
   int? otpSend;
   int? otpEnter;
 
+  User? loginUser;
+
 
   @override
   void onReady() {     // redirecting a user to Product page if it already exist.
     // TODO: implement onReady
     Map<String, dynamic>? user = box.read('loginUser');
     if(user != null ){
+      loginUser = User.fromJson(user);       // getting the data of the login user;
       Get.to((ProductPage()));
     }
     super.onReady();

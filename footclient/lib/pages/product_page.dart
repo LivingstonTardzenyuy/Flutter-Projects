@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:footclient/pages/login_page.dart';
 import 'package:footclient/pages/product_description.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../widgets/dropdown_botton.dart';
 import '../widgets/multi_select_dropdown.dart';
@@ -18,7 +21,13 @@ class ProductPage extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+          IconButton(onPressed: () {
+            GetStorage box = GetStorage();  // login out the user;
+            // print(box);
+            box.erase();
+            Get.offAll((LoginPage()));  // offall allow use to log out a user an can't return to this page again.
+          },
+              icon: Icon(Icons.logout)),
         ],
       ),
       body: Column(
