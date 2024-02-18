@@ -79,6 +79,9 @@ class LoginController extends GetxController {
         if (querySnapshot.docs.isNotEmpty){
           var userDoc = querySnapshot.docs.first;
           var userData = userDoc.data() as Map<String, dynamic>;
+          Get.snackbar('Success', 'Login Successfull', colorText: Colors.green);
+        } else {
+          Get.snackbar('Error', 'User not found, please register', colorText: Colors.red);
         }
       }
     }
