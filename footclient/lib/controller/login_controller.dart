@@ -70,4 +70,16 @@ class LoginController extends GetxController {
       update();
     }
   }
+  
+  Future<void> loginWithPhone() async {
+    try {
+      String phoneNumber = enterNumberCtrl.text;
+      if(phoneNumber.isNotEmpty){
+        var querySnapshot = await userCollection.where('number', isEqualTo:  phoneNumber).limit(1).get();
+        if (querySnapshot.docs.isNotEmpty){
+
+        }
+      }
+    }
+  }
 }
