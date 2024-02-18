@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:footclient/controller/login_controller.dart';
+import 'package:footclient/pages/product_page.dart';
 import 'package:get/get.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -43,7 +44,10 @@ class LoginPage extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.loginWithPhone();
+                        Get.to((ProductPage()));
+                      },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.deepPurple,
