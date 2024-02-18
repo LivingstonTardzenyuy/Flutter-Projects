@@ -77,7 +77,8 @@ class LoginController extends GetxController {
       if(phoneNumber.isNotEmpty){
         var querySnapshot = await userCollection.where('number', isEqualTo:  phoneNumber).limit(1).get();
         if (querySnapshot.docs.isNotEmpty){
-
+          var userDoc = querySnapshot.docs.first;
+          var userData = userDoc.data() as Map<String, dynamic>;
         }
       }
     }
