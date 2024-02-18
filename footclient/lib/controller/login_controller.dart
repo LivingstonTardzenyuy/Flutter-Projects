@@ -77,6 +77,7 @@ class LoginController extends GetxController {
       if(phoneNumber.isNotEmpty){
         var querySnapshot = await userCollection.where('number', isEqualTo:  phoneNumber).limit(1).get();
         if (querySnapshot.docs.isNotEmpty){
+          print(querySnapshot);
           var userDoc = querySnapshot.docs.first;
           var userData = userDoc.data() as Map<String, dynamic>;
           Get.snackbar('Success', 'Login Successfull', colorText: Colors.green);
@@ -84,6 +85,9 @@ class LoginController extends GetxController {
           Get.snackbar('Error', 'User not found, please register', colorText: Colors.red);
         }
       }
+    } catch (error){
+      print(error);
+
     }
   }
 }
