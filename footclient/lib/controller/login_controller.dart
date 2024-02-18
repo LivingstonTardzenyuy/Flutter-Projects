@@ -23,6 +23,16 @@ class LoginController extends GetxController {
 
 
   @override
+  void onReady() {     // redirecting a user to Product page if it already exist.
+    // TODO: implement onReady
+    Map<String, dynamic> user = box.read('loginUser');
+    if(user != null ){
+      Get.to((ProductPage()));
+    }
+    super.onReady();
+  }
+
+  @override
   void onInit() {
     super.onInit();
     userCollection = firestore.collection('users');
