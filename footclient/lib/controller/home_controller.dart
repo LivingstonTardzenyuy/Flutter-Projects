@@ -17,8 +17,9 @@ class HomeController extends GetxController {
   late CollectionReference productCollection;
   List<Products> products = [];
   @override
+
   Future<void> onInit() async {
-    productCollection = firestore.collection('products');
+    productCollection = firestore.collection('Products');
     await fetchProducts();
     super.onInit();
 
@@ -33,7 +34,7 @@ class HomeController extends GetxController {
         products.clear();
         products.assignAll(retrievedProducts);
         Get.snackbar('Success', 'Product fetch successfully', colorText: Colors.green);
-        print("the length is $products.length");
+        print("the length is ${products.length}");
       } catch(e){
         Get.snackbar('Error', e.toString(), colorText: Colors.red);
         print(e);
