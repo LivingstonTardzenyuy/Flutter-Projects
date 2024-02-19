@@ -25,65 +25,65 @@ class ProductPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-        }
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Footwear Store',
-              style: TextStyle(fontWeight: FontWeight.bold),
+        } else {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                'Footwear Store',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              centerTitle: true,
+              actions: [
+                IconButton(onPressed: () {
+                  GetStorage box = GetStorage();  // login out the user;
+                  // print(box);
+                  box.erase();
+                  Get.offAll((LoginPage()));  // offall allow use to log out a user an can't return to this page again.
+                },
+                    icon: Icon(Icons.logout)),
+              ],
             ),
-            centerTitle: true,
-            actions: [
-              IconButton(onPressed: () {
-                GetStorage box = GetStorage();  // login out the user;
-                // print(box);
-                box.erase();
-                Get.offAll((LoginPage()));  // offall allow use to log out a user an can't return to this page again.
-              },
-                  icon: Icon(Icons.logout)),
-            ],
-          ),
-          body: Column(
-            children: [
-              SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  itemCount: 15,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
-                      child: Chip(
-                        label: Text('Category'),
-                      ),
-                    );
-                  },
+            body: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                    itemCount: 15,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
+                        child: Chip(
+                          label: Text('Category'),
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  Flexible(
-                    child: Card(
-                      child: MultiSelectDropdown(
-                        items: ['item 1', 'item 2', 'item 3'],
-                        onSelectionChanged: (selectedItems) {
-                          // Handle selected items here
-                          print('Selected items: $selectedItems');
-                        },
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Flexible(
+                      child: Card(
+                        child: MultiSelectDropdown(
+                          items: ['item 1', 'item 2', 'item 3'],
+                          onSelectionChanged: (selectedItems) {
+                            // Handle selected items here
+                            print('Selected items: $selectedItems');
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  Flexible(
-                    child: DropDownButton(
-                      items: ['Low to High', 'High to Low'],
-                      selectedItemsText: 'Sort',
-                      onSelected: (selected) {},
+                    Flexible(
+                      child: DropDownButton(
+                        items: ['Low to High', 'High to Low'],
+                        selectedItemsText: 'Sort',
+                        onSelected: (selected) {},
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(
+                  ],
+                ),
+                Expanded(
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -105,10 +105,12 @@ class ProductPage extends StatelessWidget {
                     },
                   ),
                 ),
-              // ),
-            ],
-          ),
-        );
+                // ),
+              ],
+            ),
+          );
+        }
+
       },
 
     );
