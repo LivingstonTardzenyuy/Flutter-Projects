@@ -5,6 +5,14 @@ import 'package:get/get.dart';
 import '../models/product/products.dart';
 
 class HomeController extends GetxController {
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  void setLoading(bool value){
+    _isLoading = value;
+    update();
+  }
+
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference productCollection;
   List<Products> products = [];
