@@ -86,7 +86,7 @@ class ProductPage extends StatelessWidget {
                       return ProductCard(
                         name: controller.products[index].name ?? 'No name',
                         imageUrl: controller.products[index].image ?? 'Image Url',
-                        price: controller.products[index].price.toDouble()?,
+                        price: controller.products[index].price ?? 00,
                         offerTag: '240',
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDescription()));
@@ -95,7 +95,7 @@ class ProductPage extends StatelessWidget {
                     },
                   ),
                 ),
-              ),
+              // ),
             ],
           ),
         );

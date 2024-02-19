@@ -24,6 +24,7 @@ class HomeController extends GetxController {
         products.clear();
         products.assignAll(retrievedProducts);
         Get.snackbar('Success', 'Product fetch successfully', colorText: Colors.green);
+        print(products.length);
       } catch(e){
         Get.snackbar('Error', e.toString(), colorText: Colors.red);
         print(e);
