@@ -26,6 +26,7 @@ class HomeController extends GetxController {
 
     fetchProducts() async {
       try {
+        setLoading(true);
         QuerySnapshot producutSnapshot = await productCollection.get();
         final List<Products> retrievedProducts = producutSnapshot.docs.map((doc) =>
           Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
@@ -37,7 +38,8 @@ class HomeController extends GetxController {
         Get.snackbar('Error', e.toString(), colorText: Colors.red);
         print(e);
       } finally {
-        update();
+        // update();
+        setLoading(false);
       }
     }
 }

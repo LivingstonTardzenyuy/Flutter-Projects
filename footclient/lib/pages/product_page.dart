@@ -16,6 +16,16 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller){
+        if(controller.isLoading) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("Browse Products"),
+            ),
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
         return Scaffold(
           appBar: AppBar(
             title: Text(
