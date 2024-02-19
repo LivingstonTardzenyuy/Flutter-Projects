@@ -1,13 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../models/product/products.dart';
+
 class HomeController extends GetxController {
-    fetchProducts() {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  late CollectionReference productCollection;
+  List<Products> products = [];
+  @override
+  Future<void> onInit() async {
+    productCollection = firestore.collection('products');
+    await fetchProducts();
+    super.onInit();
+
+  }
+
+    fetchProducts() async {
       try {
         QuerySnapshot producutSnapshot = await productCollection.get();
-        final list<Product> retrievedProducts = fetchProducts().docs.map((doc) =>
-          Product.fromJson(doc.data() as Map<String, dynamic>).toList()
-        );
+        final List<Products> retrievedProducts = producutSnapshot.docs.map((doc) =>
+          Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
         products.clear();
         products.assignAll(retrievedProducts);
         Get.snackbar('Success', 'Product fetch successfully', colorText: Colors.green);

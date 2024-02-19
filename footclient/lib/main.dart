@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:footclient/controller/home_controller.dart';
 import 'package:footclient/controller/login_controller.dart';
 import 'package:footclient/pages/login_page.dart';
 import 'package:footclient/pages/register_page.dart';
@@ -19,8 +20,10 @@ Future<void> main()  async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Get.put(LoginController());
+  Get.put(HomeController());
   // await Firebase.ini
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
