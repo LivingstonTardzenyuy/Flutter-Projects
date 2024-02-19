@@ -99,7 +99,8 @@ class ProductPage extends StatelessWidget {
                         price: controller.products[index].price ?? 00,
                         offerTag: '240',
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDescription()));
+                          Get.to(() => ProductDescription());
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDescription()));
                         },
                       );
                     },
