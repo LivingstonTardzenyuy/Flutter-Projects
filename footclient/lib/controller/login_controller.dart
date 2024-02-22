@@ -29,7 +29,7 @@ class LoginController extends GetxController {
     // TODO: implement onReady
     Map<String, dynamic>? user = box.read('loginUser');
     if(user != null ){
-      loginUser = User.fromJson(user);       // getting the data of the login user;
+      loginUser = User.fromJson(user);       // getting the data of the login user like username and email;
       Get.to((ProductPage()));
     }
     super.onReady();
