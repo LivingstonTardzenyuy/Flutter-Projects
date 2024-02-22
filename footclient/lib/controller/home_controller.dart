@@ -20,6 +20,7 @@ class HomeController extends GetxController {
   late CollectionReference categoryCollection;
 
   List<Products> products = [];
+  List<Products> productsShowinUI = [];         // this one is to filter the products and store them in this productShowinUI
   List<ProductCategory> productCategories = [];
   @override
 
@@ -85,7 +86,10 @@ class HomeController extends GetxController {
     } finally{
       update();
     }
+  }
 
+  filterByCategory(String category) {
+    productFilter = products.where(products) => products.c
   }
 
 }
