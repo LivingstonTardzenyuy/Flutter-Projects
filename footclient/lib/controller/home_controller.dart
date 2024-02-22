@@ -70,13 +70,22 @@ class HomeController extends GetxController {
   }
 
   fechCategory() {
-    categoryCollection.snapshots().listen((snapshot) {
-      final List<ProductCategory> retrievedCategory = snapshot.docs.map((doc) =>
-          ProductCategory.fromJson(doc.data() as Map<String, dynamic>)).toList();
+    try {
+      categoryCollection.snapshots().listen((snapshot) {
+        final List<ProductCategory> retrievedCategory = snapshot.docs.map((doc) =>
+            ProductCategory.fromJson(doc.data() as Map<String, dynamic>)).toList();
         productCategories.clear();
         productCategories.assignAll(retrievedCategory);
+        Get.snackbar('Success', 'Category fetch successfully', colorText: Colors.green);
         update();
-    });
+      });
+    } catch(e) {
+      Get.snackbar('Eror', e.toString(), colorText: Colors.red);
+      print(e);
+    } finally{
+      update();
+    }
+
   }
 
 }
