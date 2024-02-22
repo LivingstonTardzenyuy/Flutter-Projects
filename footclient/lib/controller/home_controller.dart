@@ -22,25 +22,45 @@ class HomeController extends GetxController {
     productCollection = firestore.collection('Products');
     await fetchProducts();
     super.onInit();
-
   }
 
-    fetchProducts() async {
-      try {
-        setLoading(true);
-        QuerySnapshot producutSnapshot = await productCollection.get();
-        final List<Products> retrievedProducts = producutSnapshot.docs.map((doc) =>
-          Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
+    // fetchProducts() async {
+    //   try {
+    //     setLoading(true);
+    //     QuerySnapshot producutSnapshot = await productCollection.get();
+    //     final List<Products> retrievedProducts = producutSnapshot.docs.map((doc) =>
+    //       Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
+    //     products.clear();
+    //     products.assignAll(retrievedProducts);
+    //     Get.snackbar('Success', 'Product fetch successfully', colorText: Colors.green);
+    //     print("the length is ${products.length}");
+    //   } catch(e){
+    //     Get.snackbar('Error', e.toString(), colorText: Colors.red);
+    //     print(e);
+    //   } finally {
+    //     // update();
+    //     setLoading(false);
+    //   }
+    // }
+
+  fetchProducts() {
+    try {
+      setLoading(true);
+      productCollection.snapshots().listen((snapshot) {
+        final List<Products> retrievedProducts = snapshot.docs.map((doc) =>
+            Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
         products.clear();
         products.assignAll(retrievedProducts);
         Get.snackbar('Success', 'Product fetch successfully', colorText: Colors.green);
         print("the length is ${products.length}");
-      } catch(e){
-        Get.snackbar('Error', e.toString(), colorText: Colors.red);
-        print(e);
-      } finally {
-        // update();
-        setLoading(false);
-      }
+        update();
+      });
+    } catch(e){
+      Get.snackbar('Error', e.toString(), colorText: Colors.red);
+      print(e);
+    } finally {
+      setLoading(false);
     }
+  }
+
 }

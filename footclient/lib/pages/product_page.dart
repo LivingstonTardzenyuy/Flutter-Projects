@@ -36,7 +36,6 @@ class ProductPage extends StatelessWidget {
               actions: [
                 IconButton(onPressed: () {
                   GetStorage box = GetStorage();  // login out the user;
-                  // print(box);
                   box.erase();
                   Get.offAll((LoginPage()));  // offall allow use to log out a user an can't return to this page again.
                 },
