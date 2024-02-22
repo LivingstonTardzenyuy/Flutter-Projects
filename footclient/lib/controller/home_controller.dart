@@ -26,6 +26,7 @@ class HomeController extends GetxController {
   Future<void> onInit() async {
     productCollection = firestore.collection('Products');
     categoryCollection = firestore.collection('category');
+    await fechCategory();
     await fetchProducts();
     super.onInit();
   }
