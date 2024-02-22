@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/product/products.dart';
+import '../models/product_category/product_cate.dart';
 
 class HomeController extends GetxController {
 
@@ -15,11 +17,15 @@ class HomeController extends GetxController {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference productCollection;
+  late CollectionReference categoryCollection;
+
   List<Products> products = [];
+  List<ProductCategory> productCategories = [];
   @override
 
   Future<void> onInit() async {
     productCollection = firestore.collection('Products');
+    categoryCollection = firestore.collection('category');
     await fetchProducts();
     super.onInit();
   }
@@ -61,6 +67,16 @@ class HomeController extends GetxController {
     } finally {
       setLoading(false);
     }
+  }
+
+  fechCategory() {
+    categoryCollection.snapshots().listen((snapshot) {
+      final List<ProductCategory> retrievedCategory = snapshot.docs.map((doc) =>
+          ProductCategory.fromJson(doc.data() as Map<String, dynamic>)).toList();
+        productCategories.clear();
+        productCategories.assignAll(retrievedCategory);
+        update();
+    });
   }
 
 }
