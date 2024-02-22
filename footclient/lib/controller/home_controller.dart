@@ -77,7 +77,6 @@ class HomeController extends GetxController {
             ProductCategory.fromJson(doc.data() as Map<String, dynamic>)).toList();
         productCategories.clear();
         productCategories.assignAll(retrievedCategory);
-        Get.snackbar('Success', 'Category fetch successfully', colorText: Colors.green);
         update();
       });
     } catch(e) {
