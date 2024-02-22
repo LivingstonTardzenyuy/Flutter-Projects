@@ -23,7 +23,6 @@ class LoginController extends GetxController {
 
   User? loginUser;
 
-
   @override
   void onReady() {     // redirecting a user to Product page if it already exist.
     // TODO: implement onReady
