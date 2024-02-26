@@ -89,7 +89,8 @@ class HomeController extends GetxController {
   }
 
   filterByCategory(String category) {
-    productFilter = products.where(products) => products.c
+    productsShowinUI = products.where((products) => products.category == category).toList();
+    update();
   }
 
 }

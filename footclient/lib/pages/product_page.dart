@@ -35,7 +35,7 @@ class ProductPage extends StatelessWidget {
               centerTitle: true,
               actions: [
                 IconButton(onPressed: () {
-                  GetStorage box = GetStorage();  // login out the user;
+                  GetStorage box = GetStorage();  // log out the user;
                   box.erase();
                   Get.offAll((LoginPage()));  // offall allow use to log out a user an can't return to this page again.
                 },
@@ -50,10 +50,16 @@ class ProductPage extends StatelessWidget {
                     itemCount: controller.productCategories.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
-                        child: Chip(
-                          label: Text(controller.productCategories[index].name ?? 'Error'),
+                      return InkWell(
+                        onTap: () {
+                          print('cat');
+                          controller.filterByCategory(controller.productCategories[index].name ?? '');
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
+                          child: Chip(
+                            label: Text(controller.productCategories[index].name ?? 'Error'),
+                          ),
                         ),
                       );
                     },

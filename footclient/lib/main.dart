@@ -21,7 +21,6 @@ Future<void> main()  async {
   );
   Get.put(LoginController());
   Get.put(HomeController());
-  // await Firebase.ini
   runApp(const MyApp());
 
 }
@@ -29,7 +28,6 @@ Future<void> main()  async {
 class MyApp extends StatelessWidget {
 
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
