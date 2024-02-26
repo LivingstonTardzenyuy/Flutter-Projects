@@ -20,7 +20,6 @@ class HomeController extends GetxController {
   late CollectionReference productCollection;
   late CollectionReference categoryCollection;
 
-  String? selectedCategory;
   List<Products> products = [];
   List<Products> productsShowinUI = [];         // this one is to filter the products and store them in this productShowinUI
   List<ProductCategory> productCategories = [];
@@ -91,7 +90,6 @@ class HomeController extends GetxController {
   }
 
   filterByCategory(String category) {
-
     productsShowinUI = products.where((products) => products.category == category).toList();
     print(productsShowinUI.length);
     update();
