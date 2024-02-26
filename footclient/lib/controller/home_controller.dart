@@ -15,6 +15,7 @@ class HomeController extends GetxController {
     update();
   }
 
+
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   late CollectionReference productCollection;
   late CollectionReference categoryCollection;
