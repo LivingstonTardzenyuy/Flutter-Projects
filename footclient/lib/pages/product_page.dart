@@ -17,12 +17,17 @@ class ProductPage extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (controller){
         if(controller.isLoading) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text("Browse Products"),
-            ),
-            body: Center(
-              child: CircularProgressIndicator(),
+          return RefreshIndicator(
+            onRefresh: () async{
+              await controller.fechCategory();
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text("Browse Products"),
+              ),
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
           );
         } else {
@@ -96,12 +101,12 @@ class ProductPage extends StatelessWidget {
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8, // Add mainAxisSpacing
                     ),
-                    itemCount: controller.products.length, // Change itemCount to the number of grid items you want
+                    itemCount: controller.productsShowinUI.length, // Change itemCount to the number of grid items you want
                     itemBuilder: (context, index) {
                       return ProductCard(
-                        name: controller.products[index].name ?? 'No name',
-                        imageUrl: controller.products[index].image ?? 'Image Url',
-                        price: controller.products[index].price ?? 00,
+                        name: controller.productsShowinUI[index].name ?? 'No name',
+                        imageUrl: controller.productsShowinUI[index].image ?? 'Image Url',
+                        price: controller.productsShowinUI[index].price ?? 00,
                         offerTag: '240',
                         onTap: () {
                           Get.to(() => ProductDescription());

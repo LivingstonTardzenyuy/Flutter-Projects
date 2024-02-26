@@ -60,6 +60,7 @@ class HomeController extends GetxController {
             Products.fromJson(doc.data() as Map<String, dynamic>)).toList();
         products.clear();
         products.assignAll(retrievedProducts);
+        productsShowinUI.assignAll(products);
         Get.snackbar('Success', 'Product fetch successfully', colorText: Colors.green);
         print("the length is ${products.length}");
         update();
@@ -90,6 +91,7 @@ class HomeController extends GetxController {
   }
 
   filterByCategory(String category) {
+    productsShowinUI.clear();
     productsShowinUI = products.where((products) => products.category == category).toList();
     print(productsShowinUI.length);
     update();
