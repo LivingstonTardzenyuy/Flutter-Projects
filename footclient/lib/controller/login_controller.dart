@@ -99,7 +99,7 @@ class LoginController extends GetxController {
 
           box.write('loginUser', userData);     // passing the data of the log in user from backend to frontEnd.
           enterNumberCtrl.clear();
-          Get.to((ProductPage()));
+          Get.offAll((ProductPage()));
 
           Get.snackbar('Success', 'Login Successfull with number $phoneNumber', colorText: Colors.green);
         } else {
