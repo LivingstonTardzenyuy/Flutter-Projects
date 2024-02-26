@@ -102,7 +102,9 @@ class HomeController extends GetxController {
       productsShowinUI = products;
     } else {
       List<String> lowerCaseBrands = brand.map((brand) => brand.toLowerCase()).toList();    //converting all brands to lowerCase
-      productsShowinUI = products.where((product) => lowerCaseBrands.contains(product.brand?))
+      // productsShowinUI = products.where((product) => lowerCaseBrands.contains(product.brand?.toLowerCase() ?? ''));
+      productsShowinUI = products.where((product) =>
+          lowerCaseBrands.contains(product.brand?.toLowerCase() ?? ''));
     }
   }
 }
