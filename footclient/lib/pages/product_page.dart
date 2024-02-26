@@ -19,7 +19,7 @@ class ProductPage extends StatelessWidget {
         if(controller.isLoading) {
           return RefreshIndicator(
             onRefresh: () async{
-              await controller.fechCategory();
+              controller.fechCategory();
             },
             child: Scaffold(
               appBar: AppBar(
