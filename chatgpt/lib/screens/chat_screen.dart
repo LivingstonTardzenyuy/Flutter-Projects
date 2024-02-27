@@ -41,7 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
               onPressed: () async{
-                await Services.showModalSheet(context: context)
+                await Services.showModalSheet(context: context);
               },
               icon: Icon(Icons.more_vert_rounded, color: Colors.white,),),
         ],

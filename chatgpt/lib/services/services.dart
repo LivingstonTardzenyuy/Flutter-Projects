@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constant/constant.dart';
+import '../widgets/dropdown.dart';
 import '../widgets/text_widget.dart';
 
 class Services{
@@ -18,7 +19,11 @@ class Services{
             padding: const EdgeInsets.all(18.0),
             child: Row(
               children: [
-                Flexible(child: TextWidget(label: 'Chosen Modal',fontsize: 16,))
+                Flexible(child: TextWidget(label: 'Chosen Modal',fontsize: 16,)),
+                
+                Flexible(
+                    flex: 2,
+                    child: ModalDropDownWidget())
               ],
             ),
           );
