@@ -9,10 +9,12 @@ class ModalDropDownWidget extends StatefulWidget {
 }
 
 class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
-  String currentModals = "Model 1";
+  String currentModals = "Model1";
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
+        dropdownColor: scaffoldBackgroundColor,
+        iconEnabledColor: Colors.white,
         items: getModalsItem,
         value: currentModals,
         onChanged: (value){

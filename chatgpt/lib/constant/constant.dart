@@ -19,6 +19,17 @@ List<DropdownMenuItem<String>>? get getModalsItem{
   return modelsItems;
 }
 
+// List<DropdownMenuItem<String>> getModalsItem() {
+//   return List<DropdownMenuItem<String>>.generate(
+//     models.length,
+//         (index) => DropdownMenuItem(
+//       value: models[index],
+//       child: TextWidget(label: models[index], fontsize: 15,),
+//     ),
+//   );
+// }
+
+
 final chatMessages = [
   {
     "msg": "hellow who are you",
