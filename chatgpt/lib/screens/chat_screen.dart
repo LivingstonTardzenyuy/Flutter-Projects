@@ -1,4 +1,5 @@
 import 'package:chatgpt/constant/constant.dart';
+import 'package:chatgpt/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -39,7 +40,26 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text('ChatGPT', style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () async{
+                await showModalBottomSheet(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20)
+                      )
+                    ),
+                    context: context,
+                    backgroundColor: scaffoldBackgroundColor,
+                    builder: (context){
+                      return Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Row(
+                          children: [
+                            Flexible(child: TextWidget(label: 'Chosen Modal',fontsize: 16,))
+                          ],
+                        ),
+                      );
+                    });
+              },
               icon: Icon(Icons.more_vert_rounded, color: Colors.white,),),
         ],
       ),
