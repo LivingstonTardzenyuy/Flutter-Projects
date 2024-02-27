@@ -1,4 +1,5 @@
 import 'package:chatgpt/constant/constant.dart';
+import 'package:chatgpt/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../services/assets_manager.dart';
@@ -19,7 +20,10 @@ class ChatWidget extends StatelessWidget {
                 Image.asset(AssetsManager.userimage,
                   height: 30,
                   width: 30,
-                )
+                ),
+                SizedBox(width: 10,),
+                TextWidget(
+                    label: "Hello here our msg")
               ],
             ),
           ),
