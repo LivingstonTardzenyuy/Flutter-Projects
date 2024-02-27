@@ -1,3 +1,4 @@
+import 'package:chatgpt/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -52,21 +53,28 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 size: 18,
               ),
-
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: textEditingController,
-                    onSubmitted: (value){
-                      //Todo send message
-                    },
-                    decoration: InputDecoration.collapsed(
-                        hintText: "How Can i help you",
-                        hintStyle: TextStyle(color: Colors.grey)),
-                  ),
+            SizedBox(height: 15,),
+            Material(
+              color: cardColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        style: const TextStyle(color: Colors.white),
+                        controller: textEditingController,
+                        onSubmitted: (value){
+                          //Todo send message
+                        },
+                        decoration: InputDecoration.collapsed(
+                            hintText: "How Can i help you",
+                            hintStyle: TextStyle(color: Colors.grey)),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ],
         ],
