@@ -18,7 +18,19 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: Image.asset(AssetsManager.botImage),
         title: Text('ChatGPT', style: TextStyle(color: Colors.white),),
       ),
-      body: Image.asset("assets/images/person.png"),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Flexible(
+              child: ListView.builder(
+                  itemCount: 6,
+                  itemBuilder: (context, index){
+                    return const Text('hi', style: TextStyle(fontSize: 30, color: Colors.orange),);
+                  }),
+            )
+          ],
+        ),
+      )
     );
   }
 }
