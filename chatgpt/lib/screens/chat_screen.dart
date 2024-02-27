@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../services/assets_manager.dart';
 
@@ -10,6 +11,22 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final bool _isTyping = true;
+  late TextEditingController textEditingController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    textEditingController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    textEditingController.dispose();
+
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +42,34 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ListView.builder(
                   itemCount: 6,
                   itemBuilder: (context, index){
-                    return const Text('hi', style: TextStyle(fontSize: 30, color: Colors.orange),);
+                    return const Text('hi', style: TextStyle(fontSize: 30,),);
                   }),
-            )
+            ),
+
+
+            if(_isTyping)...[
+              const SpinKitThreeBounce(
+                color: Colors.white,
+                size: 18,
+              ),
+
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: textEditingController,
+                    onSubmitted: (value){
+                      //Todo send message
+                    },
+                    decoration: InputDecoration.collapsed(
+                        hintText: "How Can i help you",
+                        hintStyle: TextStyle(color: Colors.grey)),
+                  ),
+                ),
+              ],
+            ),
           ],
+        ],
         ),
       )
     );
