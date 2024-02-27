@@ -17,52 +17,52 @@ final chatMessages = [
 
   {
     "msg": "What is flutter",
-    "chatIndex": 2,
+    "chatIndex": 0,
   },
 
   {
     "msg": "Flutter is an open source mobile aplication development framework powered by Google.",
-    "chatIndex": 3,
+    "chatIndex": 1,
   },
 
   {
     "msg": "hellow who are you",
-    "chatIndex": 4,
+    "chatIndex": 0,
   },
 
   {
     "msg": "I am ChatGPT , i am produce by open AI for making research easy and fast",
-    "chatIndex": 5,
+    "chatIndex": 1,
   },
 
   {
     "msg": "What is flutter",
-    "chatIndex": 6,
+    "chatIndex": 0,
   },
 
   {
     "msg": "Flutter is an open source mobile aplication development framework powered by Google.",
-    "chatIndex": 7,
+    "chatIndex": 1,
   },
 
   {
     "msg": "hellow who are you",
-    "chatIndex": 8,
+    "chatIndex": 0,
   },
 
   {
     "msg": "I am ChatGPT , i am produce by open AI for making research easy and fast",
-    "chatIndex": 9,
+    "chatIndex": 1,
   },
 
   {
     "msg": "What is flutter",
-    "chatIndex": 10,
+    "chatIndex": 0,
   },
 
   {
     "msg": "Flutter is an open source mobile aplication development framework powered by Google.",
-    "chatIndex": 11,
+    "chatIndex": 1,
   },
 
 ];
