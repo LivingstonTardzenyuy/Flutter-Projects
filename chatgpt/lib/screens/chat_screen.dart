@@ -1,4 +1,5 @@
 import 'package:chatgpt/constant/constant.dart';
+import 'package:chatgpt/services/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -86,7 +87,13 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
 
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try {
+                            await ApiService.getModels();
+                          } catch (error){
+                            print("error $error");
+                          }
+                        },
                         icon: Icon(Icons.send, color: Colors.white,))
                   ],
                 ),
