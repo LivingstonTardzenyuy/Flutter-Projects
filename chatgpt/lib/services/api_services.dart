@@ -1,12 +1,16 @@
+import 'dart:convert';
+
+import 'package:chatgpt/constant/api_const.dart';
+
 class ApiService{
   static Future<void> getModels() async {
     try {
-      http.get(Uri.parse("https://api.openai.com/v1/models"),
+      var response = await http.get(Uri.parse("https://api.openai.com/v1/models"),
       headers: {
-        "Authorization": "Bearer "
-      }
+        "Authorization": "Bearer $API_KEY"},
       );
-
+      Map jsonResponse = jsonDecode(response.body);           //decoding the response
+      print(jsonResponse);
     } catch(error) {
       print('error $error');
     }
