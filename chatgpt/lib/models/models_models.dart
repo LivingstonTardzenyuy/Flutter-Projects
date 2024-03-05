@@ -11,9 +11,9 @@ class ModelsModel {
 
   factory ModelsModel.fromJson(Map<String, dynamic> json) =>
       ModelsModel(
-          id: json["id"],
-          created: json["root"],
-          root: json["created"],
+          id: json["id"] ?? "",
+          created: json["created"] ?? 0,
+          root: json["root"] ?? "",
       );
 
       static List<ModelsModel> modelsFromSnapshot (List modelSnapshot){
