@@ -9,7 +9,7 @@ import 'package:chatgpt/constant/api_const.dart';
 class ApiService{
   static Future<List<ModelsModel>> getModels() async {
     try {
-      var response = await http.get(Uri.parse("$BASE_URL/modelsdfd"),
+      var response = await http.get(Uri.parse("$BASE_URL/models"),
       headers: {
         "Authorization": "Bearer $API_KEY"},
       );
@@ -22,11 +22,12 @@ class ApiService{
       List temp = [];
       for (var value in jsonResponse["data"]){
         temp.add(value);
-        log("temp $value");
+        log("temp $value['id']");
       }
       return ModelsModel.modelsFromSnapshot(temp);
     } catch(error) {
       log('error $error');
+      rethrow;
     }
   }
 }
