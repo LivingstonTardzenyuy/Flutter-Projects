@@ -72,11 +72,12 @@ class ModalDropDownWidget extends StatefulWidget {
 }
 
 class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
-  String? currentModel = "tts-1"; // Change the type to nullable String
-
+  String? currentModel = 'tts-1'; // Change the type to nullable String
+  // String? currentModel;
   @override
   Widget build(BuildContext context) {
     final modelController = Get.find<ModelsController>();
+    currentModel = modelController.currentModel!;
     return FutureBuilder<List<ModelsModel>>(
       future: modelController.getAllModels(),
       builder: (context, snapshot) {
@@ -102,6 +103,7 @@ class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
             setState(() {
               currentModel = value.toString();
             });
+            modelController.setCurrentModel(value.toString());
           },
         );
       },
