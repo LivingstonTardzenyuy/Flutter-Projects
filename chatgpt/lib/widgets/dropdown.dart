@@ -59,6 +59,10 @@ import 'package:chatgpt/models/models_models.dart';
 import 'package:chatgpt/services/api_services.dart';
 import 'package:chatgpt/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../getController/models.dart';
 
 class ModalDropDownWidget extends StatefulWidget {
   const ModalDropDownWidget({Key? key}) : super(key: key);
@@ -68,12 +72,13 @@ class ModalDropDownWidget extends StatefulWidget {
 }
 
 class _ModalDropDownWidgetState extends State<ModalDropDownWidget> {
-  String? currentModel; // Change the type to nullable String
+  String? currentModel = "tts-1"; // Change the type to nullable String
 
   @override
   Widget build(BuildContext context) {
+    final modelController = Get.find<ModelsController>();
     return FutureBuilder<List<ModelsModel>>(
-      future: ApiService.getModels(),
+      future: modelController.getAllModels(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Center(child: TextWidget(label: snapshot.error.toString()));
