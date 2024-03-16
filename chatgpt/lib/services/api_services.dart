@@ -48,24 +48,59 @@ class ApiService {
   }
 
   // Send Message
+  // static Future<void> sendMessage({required String message, required String modelId}) async {
+  //   final String? apiKey = dotenv.env['API_KEY'];
+  //   try {
+  //     log('request has being sent');
+  //     var response = await http.post(
+  //         Uri.parse("$BASE_URL/chat/completions"),
+  //       //   Uri.parse("https://api.openai.com/v1/chat/completions"),
+  //         headers: {
+  //         "Authorization": "Bearer $apiKey",
+  //         "Content-Type": "application/json"
+  //       },
+  //
+  //       body: jsonEncode({
+  //         // "model": modelId,
+  //         // "messages": [{"content": message}], // Fix the object structure here
+  //         // "temperature": 0.7
+  //         "model": modelId,
+  //         "messages": [{"role": "user", "content": message}],
+  //         "temperature": 0.7
+  //       })
+  //     );
+  //
+  //     Map jsonResponse = jsonDecode(response.body);
+  //     if(jsonResponse['error'] != null) {
+  //       throw HttpException(jsonResponse['error']['message']);
+  //     }
+  //
+  //     if(jsonResponse['choices'].length > 0) {
+  //       // log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']['message']['content']}");
+  //       log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']}");
+  //
+  //     }
+  //   } catch(error){
+  //     log('error $error');
+  //     rethrow;
+  //   }
+  // }
+
   static Future<void> sendMessage({required String message, required String modelId}) async {
     final String? apiKey = dotenv.env['API_KEY'];
     try {
-      log('request has being sent');
+      log('request has been sent');
       var response = await http.post(
-        Uri.parse("$BASE_URL/chat/completions"),
-        //   Uri.parse("https://api.openai.com/v1/chat/completions"),
-          headers: {
+        Uri.parse("$BASE_URL/chat/completions"), // Remove the trailing slash
+        headers: {
           "Authorization": "Bearer $apiKey",
-          "content-Type": "application/json"
+          "Content-Type": "application/json"
         },
-
         body: jsonEncode({
           "model": modelId,
-          // "messages": [{message}],
-          "messages": [{"content": message}], // Fix the object structure here
+          "messages": [{"role": "user", "content": message}],
           "temperature": 0.7
-        })
+        }),
       );
 
       Map jsonResponse = jsonDecode(response.body);
@@ -74,11 +109,9 @@ class ApiService {
       }
 
       if(jsonResponse['choices'].length > 0) {
-        // log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']['message']['content']}");
         log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']}");
-
       }
-    } catch(error){
+    } catch(error) {
       log('error $error');
       rethrow;
     }
