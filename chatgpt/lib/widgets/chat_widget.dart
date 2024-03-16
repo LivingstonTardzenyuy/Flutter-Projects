@@ -44,7 +44,7 @@ class ChatWidget extends StatelessWidget {
                       Icons.thumb_up_alt_outlined,
                       color: Colors.white,
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(width: 10,),
                     Icon(Icons.thumb_down_alt_outlined,
                     color: Colors.white,)
                   ],

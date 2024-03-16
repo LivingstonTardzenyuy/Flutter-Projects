@@ -1,4 +1,3 @@
 String BASE_URL = "https://api.openai.com/v1/";
-// String API_KEY = "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";
-// String API_KEY = "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";
-String API_KEY="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";
+
+String API_KEYs = "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";

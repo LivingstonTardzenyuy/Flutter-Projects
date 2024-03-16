@@ -1,5 +1,6 @@
 import 'package:chatgpt/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -7,7 +8,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'constant/constant.dart';
 import 'getController/models.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: 'assets/images/.env');
   runApp(const MyApp());
 }
 
