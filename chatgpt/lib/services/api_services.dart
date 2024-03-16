@@ -48,19 +48,22 @@ class ApiService {
   }
 
   // Send Message
-  static Future<List<ModelsModel>> sendMessage({required String message, required String modelId}) async {
+  static Future<void> sendMessage({required String message, required String modelId}) async {
     final String? apiKey = dotenv.env['API_KEY'];
     try {
+      log('request has being sent');
       var response = await http.post(
         Uri.parse("$BASE_URL/chat/completions"),
-        headers: {
+        //   Uri.parse("https://api.openai.com/v1/chat/completions"),
+          headers: {
           "Authorization": "Bearer $apiKey",
           "content-Type": "application/json"
         },
 
         body: jsonEncode({
           "model": modelId,
-          "messages": [{message}],
+          // "messages": [{message}],
+          "messages": [{"content": message}], // Fix the object structure here
           "temperature": 0.7
         })
       );
@@ -71,7 +74,9 @@ class ApiService {
       }
 
       if(jsonResponse['choices'].length > 0) {
-        log("jsonResponse[choices]text ${jsonResponse['choices']['message']['content']}");
+        // log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']['message']['content']}");
+        log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']}");
+
       }
     } catch(error){
       log('error $error');

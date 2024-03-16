@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:chatgpt/constant/constant.dart';
 import 'package:chatgpt/services/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 
+import '../getController/models.dart';
 import '../services/assets_manager.dart';
 import '../services/services.dart';
 import '../widgets/chat_widget.dart';
@@ -34,6 +38,8 @@ class _ChatScreenState extends State<ChatScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    final modelController = Get.find<ModelsController>();
+
     return Scaffold(
       appBar: AppBar(
         elevation: 2,
@@ -89,9 +95,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     IconButton(
                         onPressed: () async {
                           try {
-                            await ApiService.getModels();
+                            await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
                           } catch (error){
-                            print("error $error");
+                            log("error $error");
                           }
                         },
                         icon: Icon(Icons.send, color: Colors.white,))

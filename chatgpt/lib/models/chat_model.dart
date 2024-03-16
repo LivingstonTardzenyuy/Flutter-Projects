@@ -5,5 +5,5 @@ class ChatModel {
   ChatModel({
     required this.msg,
     required this.chatIndex
-  })
-};
+  });
+}
