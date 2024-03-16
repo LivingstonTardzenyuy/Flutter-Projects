@@ -49,6 +49,33 @@ class ApiService {
 
   // Send Message
   static Future<List<ModelsModel>> sendMessage({required String message, required String modelId}) async {
-    try
+    final String? apiKey = dotenv.env['API_KEY'];
+    try {
+      var response = await http.post(
+        Uri.parse("$BASE_URL/chat/completions"),
+        headers: {
+          "Authorization": "Bearer $apiKey",
+          "content-Type": "application/json"
+        },
+
+        body: jsonEncode({
+          "model": modelId,
+          "messages": [{message}],
+          "temperature": 0.7
+        })
+      );
+
+      Map jsonResponse = jsonDecode(response.body);
+      if(jsonResponse['error'] != null) {
+        throw HttpException(jsonResponse['error']['message']);
+      }
+
+      if(jsonResponse['choices'].length > 0) {
+        log("jsonResponse[choices]text ${jsonResponse['choices']['message']['content']}");
+      }
+    } catch(error){
+      log('error $error');
+      rethrow;
+    }
   }
 }
