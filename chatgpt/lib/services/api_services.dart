@@ -86,12 +86,95 @@ class ApiService {
   //   }
   // }
 
+  // static Future<void> sendMessage({required String message, required String modelId}) async {
+  //   final String? apiKey = dotenv.env['API_KEY'];
+  //   try {
+  //     log('request has been sent');
+  //     // var response = await http.post(
+  //     //   Uri.parse("$BASE_URL/engines/$modelId/completions"),
+  //     //   headers: {
+  //     //     "Authorization": "Bearer $apiKey",
+  //     //     "Content-Type": "application/json"
+  //     //   },
+  //     //   body: jsonEncode({
+  //     //     "messages": [{"role": "user", "content": message}],
+  //     //     "temperature": 0.7
+  //     //   }),
+  //     // );
+  //     var response = await http.post(
+  //       Uri.parse("$BASE_URL/engines/$modelId/completions"),
+  //       headers: {
+  //         "Authorization": "Bearer $apiKey",
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: jsonEncode({
+  //         "messages": [{"role": "user", "content": message}],
+  //         "temperature": 0.7
+  //       }),
+  //     );
+  //
+  //
+  //     Map jsonResponse = jsonDecode(response.body);
+  //     if(jsonResponse['error'] != null) {
+  //       throw HttpException(jsonResponse['error']['message']);
+  //     }
+  //
+  //     if(jsonResponse['choices'].length > 0) {
+  //       log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']}");
+  //     }
+  //   } catch(error) {
+  //     log('error $error');
+  //     rethrow;
+  //   }
+  // }
+
+  // static Future<void> sendMessage({required String message, required String modelId}) async {
+  //   final String? apiKey = dotenv.env['API_KEY'];
+  //   try {
+  //     log('request has been sent');
+  //
+  //     var response = await http.post(
+  //       Uri.parse("$BASE_URL/engines/$modelId/completions"),
+  //       headers: {
+  //         "Authorization": "Bearer $apiKey",
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: jsonEncode({
+  //         "messages": [{"role": "user", "content": message}],
+  //         "temperature": 0.7
+  //       }),
+  //     );
+  //
+  //     print('the model id is $modelId');
+  //     if (response.statusCode == 200) {
+  //       Map jsonResponse = jsonDecode(response.body);
+  //       if (jsonResponse.containsKey('error')) {
+  //         throw HttpException(jsonResponse['error']['message']);
+  //       }
+  //
+  //       if (jsonResponse.containsKey('choices') && jsonResponse['choices'].length > 0) {
+  //         var text = jsonResponse['choices'][0]['message']['content']; // Extracting the generated text
+  //         log("Generated text: $text");
+  //       } else {
+  //         log("No choices found in the response.");
+  //       }
+  //     } else {
+  //       throw HttpException('Request failed with status: ${response.statusCode}');
+  //     }
+  //   } catch (error) {
+  //     log('error $error');
+  //     rethrow;
+  //   }
+  // }
+
+
+
   static Future<void> sendMessage({required String message, required String modelId}) async {
-    final String? apiKey = dotenv.env['API_KEY'];
+      final String? apiKey = dotenv.env['API_KEY'];
     try {
-      log('request has been sent');
-      var response = await http.post(
-        Uri.parse("$BASE_URL/chat/completions"), // Remove the trailing slash
+      // Make the HTTP request
+      final response = await http.post(
+        Uri.parse("$BASE_URL/chat/completions"),
         headers: {
           "Authorization": "Bearer $apiKey",
           "Content-Type": "application/json"
@@ -103,17 +186,21 @@ class ApiService {
         }),
       );
 
-      Map jsonResponse = jsonDecode(response.body);
-      if(jsonResponse['error'] != null) {
-        throw HttpException(jsonResponse['error']['message']);
-      }
+      // Check if request was successful
+      if (response.statusCode == 200) {
+        // Parse JSON response
+        final jsonResponse = jsonDecode(response.body);
 
-      if(jsonResponse['choices'].length > 0) {
-        log("jsonResponse[choices]text ${jsonResponse['choices'][0]['text']}");
+        // Log the response
+        log('Response: $jsonResponse');
+      } else {
+        // Handle non-200 status code
+        log('Request failed with status: ${response.statusCode}');
       }
-    } catch(error) {
-      log('error $error');
-      rethrow;
+    } catch (error) {
+      // Handle any errors
+      log('Error: $error');
+      rethrow; // Rethrow the error for handling in calling function
     }
   }
 }

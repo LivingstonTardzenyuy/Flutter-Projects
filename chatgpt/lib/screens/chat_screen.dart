@@ -95,7 +95,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     IconButton(
                         onPressed: () async {
                           try {
-                            await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
+                              await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
                           } catch (error){
                             log("error $error");
                           }
