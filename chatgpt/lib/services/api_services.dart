@@ -51,6 +51,7 @@ class ApiService {
 
 
 
+<<<<<<< HEAD
   // static Future<List<ChatModel>> sendMessage({required String message, required String modelId}) async {
   //     final String? apiKey = dotenv.env['API_KEY'];
   //   try {
@@ -100,6 +101,10 @@ class ApiService {
 
   static Future<List<ChatModel>> sendMessage({required String message, required String modelId}) async {
     final String? apiKey = dotenv.env['API_KEY'];
+=======
+  static Future<void> sendMessage({required String message, required String modelId}) async {
+      final String? apiKey = dotenv.env['API_KEY'];
+>>>>>>> parent of d206309 (tryigng to show messages)
     try {
       // Make the HTTP request
       final response = await http.post(
@@ -115,7 +120,6 @@ class ApiService {
         }),
       );
 
-      List<ChatModel> chatList = [];
       // Check if request was successful
       if (response.statusCode == 200) {
         // Parse JSON response
@@ -123,6 +127,7 @@ class ApiService {
 
         // Log the response
         log('Response: $jsonResponse');
+<<<<<<< HEAD
 
         // Check if the response contains the 'messages' field and it's not null
         if (jsonResponse['choices'] != null && jsonResponse['choices'] is List) {
@@ -137,11 +142,16 @@ class ApiService {
           // Handle case where 'messages' field is missing or null
           log('No messages found in the response.');
         }
+=======
+>>>>>>> parent of d206309 (tryigng to show messages)
       } else {
         // Handle non-200 status code
         log('Request failed with status: ${response.statusCode}');
       }
+<<<<<<< HEAD
       return chatList;
+=======
+>>>>>>> parent of d206309 (tryigng to show messages)
     } catch (error) {
       // Handle any errors
       log('Error: $error');

@@ -24,7 +24,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
 
   // final List<ChatModel> chatMessages = []; // Create a list to hold chat messages
-  bool _isTyping = false;
+  final bool _isTyping = true;
   late TextEditingController textEditingController;
 
   @override
@@ -75,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
               const SpinKitThreeBounce(
                 color: Colors.white,
                 size: 18,
-              ),],
+              ),
             SizedBox(height: 15,),
             Material(
               color: cardColor,
@@ -97,8 +97,17 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
 
                     IconButton(
+<<<<<<< HEAD
                         onPressed: () async{
                           await sendMessageFCT(modelsController: modelController);
+=======
+                        onPressed: () async {
+                          try {
+                              await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
+                          } catch (error){
+                            log("error $error");
+                          }
+>>>>>>> parent of d206309 (tryigng to show messages)
                         },
                         icon: Icon(Icons.send, color: Colors.white,))
                   ],
@@ -106,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
           ],
-        // ],
+        ],
         ),
       )
     );
