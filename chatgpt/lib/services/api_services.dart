@@ -51,45 +51,8 @@ class ApiService {
 
 
 
-  // static Future<void> sendMessage({required String message, required String modelId}) async {
-  //     final String? apiKey = dotenv.env['API_KEY'];
-  //   try {
-  //     // Make the HTTP request
-  //     final response = await http.post(
-  //       Uri.parse("$BASE_URL/chat/completions"),
-  //       headers: {
-  //         "Authorization": "Bearer $apiKey",
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: jsonEncode({
-  //         "model": modelId,
-  //         "messages": [{"role": "user", "content": message}],
-  //         "temperature": 0.7
-  //       }),
-  //     );
-  //
-  //     // Check if request was successful
-  //     if (response.statusCode == 200) {
-  //       // Parse JSON response
-  //       final jsonResponse = jsonDecode(response.body);
-  //
-  //       // Log the response
-  //       log('Response: $jsonResponse');
-  //     } else {
-  //       // Handle non-200 status code
-  //       log('Request failed with status: ${response.statusCode}');
-  //     }
-  //   } catch (error) {
-  //     // Handle any errors
-  //     log('Error: $error');
-  //     rethrow; // Rethrow the error for handling in calling function
-  //   }
-  // }
-
-
-  Future<void> sendMessage({required String message, required String modelId,required Function(ChatModel) onMessageReceived,
-  }) async {
-    final String? apiKey = dotenv.env['API_KEY'];
+  static Future<void> sendMessage({required String message, required String modelId}) async {
+      final String? apiKey = dotenv.env['API_KEY'];
     try {
       // Make the HTTP request
       final response = await http.post(
@@ -110,14 +73,8 @@ class ApiService {
         // Parse JSON response
         final jsonResponse = jsonDecode(response.body);
 
-        // Extract chat message from the response
-        final chatMessage = ChatModel.fromJson(jsonResponse['choices'][0]['message']);
-
-        // Add the chat message to the list
-        // setState(() {
-        //   chatMessages.add(chatMessage);
-        // });
-        onMessageReceived(chatMessage);
+        // Log the response
+        log('Response: $jsonResponse');
       } else {
         // Handle non-200 status code
         log('Request failed with status: ${response.statusCode}');
@@ -128,5 +85,7 @@ class ApiService {
       rethrow; // Rethrow the error for handling in calling function
     }
   }
+
+
 }
 // }
