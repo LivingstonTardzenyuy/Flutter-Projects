@@ -23,7 +23,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
 
   // final List<ChatModel> chatMessages = []; // Create a list to hold chat messages
-  final bool _isTyping = true;
+  bool _isTyping = false;
   late TextEditingController textEditingController;
 
   @override
@@ -73,7 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
               const SpinKitThreeBounce(
                 color: Colors.white,
                 size: 18,
-              ),
+              ),],
             SizedBox(height: 15,),
             Material(
               color: cardColor,
@@ -97,9 +97,15 @@ class _ChatScreenState extends State<ChatScreen> {
                     IconButton(
                         onPressed: () async {
                           try {
-                              await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
+                              setState(() {
+                                _isTyping = true;
+                              });
+
+                              final list = await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
                           } catch (error){
                             log("error $error");
+                          } finally{
+                            _isTyping = false;
                           }
                         },
                         icon: Icon(Icons.send, color: Colors.white,))
@@ -108,7 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
           ],
-        ],
+        // ],
         ),
       )
     );

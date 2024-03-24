@@ -51,7 +51,7 @@ class ApiService {
 
 
 
-  static Future<void> sendMessage({required String message, required String modelId}) async {
+  static Future<List<ChatModel>> sendMessage({required String message, required String modelId}) async {
       final String? apiKey = dotenv.env['API_KEY'];
     try {
       // Make the HTTP request
@@ -68,6 +68,7 @@ class ApiService {
         }),
       );
 
+      List<ChatModel> chatList = [];
       // Check if request was successful
       if (response.statusCode == 200) {
         // Parse JSON response
@@ -75,15 +76,26 @@ class ApiService {
 
         // Log the response
         log('Response: $jsonResponse');
+        // chatList = List.generate(length, (index) => null)
+
+
+        final List<dynamic> messages = jsonResponse['messages'];
+        chatList = messages.map((message) => ChatModel.fromJson(message)).toList();
+
+
+
       } else {
         // Handle non-200 status code
         log('Request failed with status: ${response.statusCode}');
       }
+      return chatList;
+
     } catch (error) {
       // Handle any errors
       log('Error: $error');
       rethrow; // Rethrow the error for handling in calling function
     }
+
   }
 
 
