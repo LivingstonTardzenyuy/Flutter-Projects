@@ -8,6 +8,6 @@ class ChatModel {
   });
 
    factory ChatModel.fromJson(Map<String, dynamic> json) => ChatModel(
-       msg: json['msg'],
-       chatIndex: json['chatIndex']);
+       msg: json['msg'] ?? '',
+       chatIndex: json['chatIndex'] ?? '');
 }
