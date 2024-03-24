@@ -5,7 +5,7 @@ import '../models/models_models.dart';
 
 class ModelsController extends GetxController{
   List<ModelsModel> modelsList = [];
-  String? currentModel = "tts-1";
+  String? currentModel = "gpt-3.5-turbo";
   List<ModelsModel> get getModelsList {
     return modelsList;
   }

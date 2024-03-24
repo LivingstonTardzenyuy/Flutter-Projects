@@ -7,6 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../getController/models.dart';
+import '../models/chat_model.dart';
 import '../services/assets_manager.dart';
 import '../services/services.dart';
 import '../widgets/chat_widget.dart';
@@ -20,8 +21,16 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+
+  final List<ChatModel> chatMessages = []; // Create a list to hold chat messages
   final bool _isTyping = true;
   late TextEditingController textEditingController;
+
+  void addMessageToChat(ChatModel message) {
+    setState(() {
+      chatMessages.add(message);
+    });
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -56,16 +65,27 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            // Flexible(
+            //   child: ListView.builder(
+            //       itemCount: 6,
+            //       itemBuilder: (context, index){
+            //         return ChatWidget(
+            //           msg: chatMessages[index]['msg'].toString(),
+            //           chatIndex: int.parse(chatMessages[index]['chatIndex'].toString()),);
+            //       }),
+            // ),
+
             Flexible(
               child: ListView.builder(
-                  itemCount: 6,
-                  itemBuilder: (context, index){
-                    return ChatWidget(
-                      msg: chatMessages[index]['msg'].toString(),
-                      chatIndex: int.parse(chatMessages[index]['chatIndex'].toString()),);
-                  }),
+                itemCount: chatMessages.length, // Use the length of chatMessages list
+                itemBuilder: (context, index) {
+                  return ChatWidget(
+                    msg: chatMessages[index].msg,
+                    chatIndex: chatMessages[index].chatIndex,
+                  );
+                },
+              ),
             ),
-
 
             if(_isTyping)...[
               const SpinKitThreeBounce(
@@ -94,11 +114,18 @@ class _ChatScreenState extends State<ChatScreen> {
 
                     IconButton(
                         onPressed: () async {
-                          try {
-                              await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
-                          } catch (error){
-                            log("error $error");
-                          }
+                          // try {
+                          //     await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
+                          // } catch (error){
+                          //   log("error $error");
+                          // }
+                          ApiService apiService = ApiService(); // Create an instance of ApiService
+                          await apiService.sendMessage(
+                            message: textEditingController.text,
+                            modelId: modelController.getCurrentModel ?? '',
+                            onMessageReceived: addMessageToChat, // Pass the callback function
+                          );
+
                         },
                         icon: Icon(Icons.send, color: Colors.white,))
                   ],
