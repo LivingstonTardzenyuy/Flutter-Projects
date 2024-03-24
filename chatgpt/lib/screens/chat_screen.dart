@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:chatgpt/constant/constant.dart';
+import 'package:chatgpt/models/models_models.dart';
 import 'package:chatgpt/services/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -40,9 +41,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
     super.dispose();
   }
+  final modelController = Get.find<ModelsController>();
+  List<ChatModel> chatList = [];
   @override
   Widget build(BuildContext context) {
-    final modelController = Get.find<ModelsController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -62,11 +64,11 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Flexible(
               child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: chatList.length,
                   itemBuilder: (context, index){
                     return ChatWidget(
-                      msg: chatMessages[index]['msg'].toString(),
-                      chatIndex: int.parse(chatMessages[index]['chatIndex'].toString()),);
+                      msg: chatList[index].msg,
+                      chatIndex: chatList[index].chatIndex);
                   }),
             ),
             if(_isTyping)...[
@@ -85,8 +87,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: TextField(
                         style: const TextStyle(color: Colors.white),
                         controller: textEditingController,
-                        onSubmitted: (value){
-                          //Todo send message
+                        onSubmitted: (value) async{
+                          await sendMessageFCT(modelsController: modelController);
                         },
                         decoration: InputDecoration.collapsed(
                             hintText: "How Can i help you",
@@ -95,18 +97,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
 
                     IconButton(
-                        onPressed: () async {
-                          try {
-                              setState(() {
-                                _isTyping = true;
-                              });
-
-                              final list = await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
-                          } catch (error){
-                            log("error $error");
-                          } finally{
-                            _isTyping = false;
-                          }
+                        onPressed: () async{
+                          await sendMessageFCT(modelsController: modelController);
                         },
                         icon: Icon(Icons.send, color: Colors.white,))
                   ],
@@ -118,5 +110,24 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       )
     );
+  }
+
+
+  Future<void> sendMessageFCT ({required ModelsController modelsController}) async {
+     try {
+        setState(() {
+        _isTyping = true;
+      });
+
+      chatList = await ApiService.sendMessage(message: textEditingController.text, modelId: modelController.getCurrentModel ?? '');
+
+      setState(() {
+
+      });
+     } catch (error){
+        log("error $error");
+     } finally{
+      _isTyping = false;
+    }
   }
 }
